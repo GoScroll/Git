@@ -2,9 +2,7 @@
  * 页面导航
  */
 
-import {View} from 'react-native';
 import {StackNavigator} from 'react-navigation';
-import HomeTabs from './Common/HomeTabs';
 import Login from './myPage/Login'
 import Register from './myPage/register/Register'
 import Prove from './myPage/register/Prove';
@@ -24,12 +22,6 @@ import GuidePage from './GuidePage';
 const router = StackNavigator({
   Home: {
     screen: GuidePage,
-    navigationOptions: {
-      header: null
-    }
-  },
-  HomeTabs: {
-    screen: HomeTabs,
     navigationOptions: {
       header: null
     }
