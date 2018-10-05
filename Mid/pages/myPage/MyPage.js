@@ -1,14 +1,23 @@
 /**
- *我的页面
+ * 我的界面
  */
 
 import React, { Component } from 'react';
-import {AppRegistry, Text} from 'react-native';
+import {AppRegistry, Text, View, TouchableOpacity} from 'react-native';
 
 export default class MyPage extends Component {
   render() {
     return(
-        <Text>MyPage</Text>
+        <View>
+          <View style={{height:50}}/>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('Login')}>
+              <Text>登陆</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('Setting')}>
+              <Text>设置</Text>
+            </TouchableOpacity>
+        </View>
+
     )
   }
 }

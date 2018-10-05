@@ -59,7 +59,7 @@ export default class HomeTabs extends Component {
                                              source={require('../../res/images/me2.png')}/>}
               onPress={()=> this.setState({selectedTab:'MyPage'})}
           >
-            <MyPage/>
+            <MyPage {...this.props}/>
           </TabNavigator.Item>
         </TabNavigator>
     )
