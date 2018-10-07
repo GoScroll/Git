@@ -25,13 +25,11 @@ const scale = Math.min(deviceHeight / h2, deviceWidth / w2);   //获取缩放比
  * return number dp
  */
 
-//字体大小
 export function setSpText(size: number) {
   size = Math.round((size * scale + 0.5) * pixelRatio / fontScale);
   return (size / pixelRatio);
 }
 
-//页面布局的大小，如：width、height、margin～、padding～等
 export function scaleSize(size: Number) {
   return size / 750 * deviceWidth;
 }
