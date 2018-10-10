@@ -4,6 +4,7 @@
 
 import {StackNavigator} from 'react-navigation';
 import HomeTabs from './Common/HomeTabs';
+import MidTab from './lendPage/mid/MidTab'
 import Login from './myPage/Login';
 import Register from './myPage/register/Register';
 import Prove from './myPage/register/Prove';
@@ -19,6 +20,11 @@ import TelChange from './myPage/seeting/TelChange';
 import ChangePassword from './myPage/seeting/ChangePassword';
 import ChangeProve from './myPage/seeting/ChangeProve';
 import GuidePage from './GuidePage';
+import About from './myPage/function/About';
+import Help from './myPage/function/Help';
+import WeiXin from './myPage/function/Weixin';
+import DetailHelp from './myPage/function/DetailHelp';
+import LiuYan from './myPage/function/Liuyan';
 
 const router = StackNavigator({
   Home: {
@@ -28,7 +34,13 @@ const router = StackNavigator({
     }
   },
   HomeTabs:{
-    screen: HomeTabs
+    screen: HomeTabs,
+  },
+  MidTab: {
+    screen: MidTab,
+    navigationOptions: {
+      header:null,
+    }
   },
   Login:{
     screen: Login,
@@ -60,7 +72,7 @@ const router = StackNavigator({
   Setting: {
     screen: Setting,
     navigationOptions: {
-      title: '设置'
+      header:null,
     }
   },
   FindBackPassword: {
@@ -110,7 +122,23 @@ const router = StackNavigator({
     navigationOptions: {
       title: '输入验证码'
     }
-  }
+  },
+  About:{
+    screen: About,
+  },
+  Help:{
+    screen:Help,
+  },
+  WeiXin:{
+    screen:WeiXin,
+  },
+  DetailHelp:{
+    screen:DetailHelp,
+  },
+  LiuYan:{
+    screen:LiuYan,
+  },
+
 });
 
 export default router;

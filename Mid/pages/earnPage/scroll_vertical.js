@@ -14,10 +14,10 @@ export default class ScrollVertical extends Component {
 
     constructor(props) {
         super(props)
-        let translateValue= new Animated.ValueXY({x: 0, y: 0})
+        let translateValue= new Animated.ValueXY({x: 0, y: 0});
         translateValue.addListener(({x,y})=>{
            // Log('value',x,y)
-        })
+        });
         this.state = {
             translateValue: translateValue,
             // 滚屏高度
@@ -75,7 +75,7 @@ export default class ScrollVertical extends Component {
             this.setState({
                 kb_content: content.concat(content[0]),
                 kb_contentOffsetY: h
-            })
+            });
 
             // 开始动画
             // this._startAnimation()

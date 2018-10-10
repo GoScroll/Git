@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, TextInput, TouchableOpacity, Dimensions} from 'react-native';
 import * as ScreenUtils from "../../Common/ScreenUtils";
+import storage from '../../Common/StorageConfig';
 const {width} = Dimensions.get('window');
 export default class ChangeProve extends Component{
   static navigationOptions={
@@ -20,6 +21,8 @@ export default class ChangeProve extends Component{
       time:60,
       inputTexts:new Array(6),
       editable:true,
+      textTel: this.props.navigation.state.params.textTel,
+      phoneNum: this.props.navigation.state.params.text,
     }
   }
 
@@ -44,7 +47,7 @@ export default class ChangeProve extends Component{
   }
 
   textLogin() {
-    this.props.navigation.navigate('ChangeTel')
+    this.props.navigation.navigate('ChangeTel', {textTel: this.state.phoneNum})
   }
 
   Inputs() {

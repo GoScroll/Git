@@ -1,0 +1,22 @@
+{
+  "data":[
+    {
+      "img":"http://ww1.sinaimg.cn/large/0077HGE3gy1fw2xkofgkrj306o06odg1.jpg",
+      "name": "席梦思床垫",
+      "attributes": "软硬",
+      "Introduction": "弹簧床垫珀兰天然乳胶床垫椰棕垫"
+    },
+    {
+      "img":"http://ww1.sinaimg.cn/large/0077HGE3gy1fw2xkofgkrj306o06odg1.jpg",
+      "name": "乳胶床垫",
+      "attributes": "折叠",
+      "Introduction": "乐仕棕垫椰棕棕榈便硬席梦思"
+    },
+    {
+      "img":"http://ww1.sinaimg.cn/large/0077HGE3gy1fw2xkofgkrj306o06odg1.jpg",
+      "name": "棉床垫",
+      "attributes": "双人塌",
+      "Introduction": "南极人记忆棉床垫"
+    }
+  ]
+}
