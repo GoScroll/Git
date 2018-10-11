@@ -10,9 +10,9 @@ import {
     ToastAndroid
 } from 'react-native';
 import Title from './Title';
-import Report from './ReportData';
+import Report from '../../res/json/ReportData';
 import { ActionSheet } from 'antd-mobile-rn';
-import * as ScreenUtils from "./ScreenUtils";
+import * as ScreenUtils from "../Common/ScreenUtils";
 import ScrollVertical from './scroll_vertical';
 let width = Dimensions.get('window');
 let height = Dimensions.get('window');
@@ -47,7 +47,13 @@ export default class EarnPage extends Component{
     }
 
     showRewardRules(){
-        ToastAndroid.showWithGravity('这里是奖励规则，修改这里的代码', 1000, ToastAndroid.CENTER);
+        this.props.navigation.push(
+            'RewardRules',
+            {
+              'title': '奖励规则'
+            }
+        )
+        // ToastAndroid.showWithGravity('这里是奖励规则，修改这里的代码', 1000, ToastAndroid.CENTER);
         // this.props.navigation.push(
         //     'NewsDetail',
         //     {
