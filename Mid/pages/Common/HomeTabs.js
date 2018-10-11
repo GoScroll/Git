@@ -31,7 +31,7 @@ export default class HomeTabs extends Component {
                                            source={require('../../res/images/jieqian2.png')}/>}
             onPress={()=> this.setState({selectedTab:'LendPage'})}
           >
-            <LendPage/>
+            <LendPage {...this.props}/>
           </TabNavigator.Item>
 
           <TabNavigator.Item

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput, Dimensions} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, TextInput, Dimensions, DeviceEventEmitter} from 'react-native';
 const {width} = Dimensions.get('window');
+import storage from '../../Common/StorageConfig';
 
 export default class ChangePassword extends Component{
   static navigationOptions={
@@ -18,7 +19,26 @@ export default class ChangePassword extends Component{
     this.state = {
       newPassword: '',
       conPassword: '',
+      textTel: '',
+      imgUrl:'',
+      nickName:'',
     }
+  }
+
+  componentDidMount() {
+    storage.load({
+      key:JSON.stringify(this.props.navigation.state.params.textTel),
+      autoSync: true,
+      syncInBackground: true,
+    }).then((ret)=> {
+      this.setState({
+        textTel: ret.textTel,
+        imgUrl: ret.imgUrl,
+        nickName: ret.nickName,
+      })
+    }).catch((error)=> {
+      console.log(error);
+    })
   }
 
   render() {
@@ -50,11 +70,29 @@ export default class ChangePassword extends Component{
                 onChangeText={(text)=>this.setState({conPassword:text})}
             />
           </View>
-          <TouchableOpacity style={styles.touch} onPress={()=> this.props.navigation.navigate('Setting')}>
+          <TouchableOpacity style={styles.touch} onPress={()=> this.onPress()}>
             <Text butText>完成</Text>
           </TouchableOpacity>
         </View>
     )
+  }
+
+  onPress() {
+    if(this.state.newPassword === this.state.conPassword) {
+      storage.save({
+        key: JSON.stringify(this.props.navigation.state.params.textTel),
+        data: {
+          textTel: this.state.textTel,
+          password: this.state.newPassword,
+          imgUrl: this.state.imgUrl,
+          nickName: this.state.nickName,
+        }
+      });
+      DeviceEventEmitter.emit('textTel', this.props.navigation.state.params.textTel);
+      this.props.navigation.navigate('Setting');
+    }else {
+      alert('请确认密码相同')
+    }
   }
 }
 

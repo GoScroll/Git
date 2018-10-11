@@ -20,6 +20,7 @@ export default class TelChange extends Component{
     this.state = {
       text: ' ',
       num: '86',
+      textTel: this.props.navigation.state.params.textTel,
     }
   }
 
@@ -46,7 +47,7 @@ export default class TelChange extends Component{
               onChangeText={(text)=> this.setState({text: text})}
             />
           </View>
-          <TouchableOpacity style={styles.touch} onPress={()=> this.props.navigation.navigate('ChangeProve')}>
+          <TouchableOpacity style={styles.touch} onPress={()=> this.props.navigation.navigate('ChangeProve', {textTel: this.state.textTel, text:this.state.text})}>
             <Text style={{fontSize:19, color: 'black'}}>下一步</Text>
           </TouchableOpacity>
         </View>

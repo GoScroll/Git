@@ -5,9 +5,12 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  StatusBar, DeviceEventEmitter
+  StatusBar,
+  DeviceEventEmitter
 } from 'react-native';
 import * as ScreenUtils from "../../Common/ScreenUtils";
+import storage from '../../Common/StorageConfig';
+import Icon1 from "react-native-vector-icons/Ionicons";
 let ImagePicker = require('react-native-image-picker');
 
 export default class Setting extends Component {
@@ -29,10 +32,47 @@ export default class Setting extends Component {
       Data:"",
       nickName:"",
       imgUrl:'',
-      phoneNum:'',
+      textTel:this.props.navigation.state.params.textTel,
+      password:'',
       avatarSource: "",
-      videoSource: ""
+      videoSource: "",
     }
+  }
+
+  componentDidMount() {
+    storage.load({
+      key:JSON.stringify(this.props.navigation.state.params.textTel),
+      autoSync: true,
+      syncInBackground: true,
+    }).then((ret)=> {
+      this.setState({
+        imgUrl: ret.imgUrl,
+        nickName: ret.nickName,
+        textTel: ret.textTel,
+        password: ret.password,
+      })
+    });
+    let that = this;
+    this.listener = DeviceEventEmitter.addListener('setting', function (textTel){
+      storage.load({
+        key: JSON.stringify(textTel),
+        autoSync: true,
+        syncInBackground: true
+      }).then((ret)=> {
+        that.setState({
+          imgUrl: ret.imgUrl,
+          nickName: ret.nickName,
+          textTel: ret.textTel,
+          password: ret.password
+        })
+      }).catch((error)=> {
+        console.log(error)
+      })
+    })
+  }
+
+  componentWillUnMount() {
+    this.listener.remove();
   }
 
   selectPhotoTapped() {
@@ -70,6 +110,15 @@ export default class Setting extends Component {
         this.setState({
           avatarSource: source,
         });
+        storage.save({
+          key: JSON.stringify(this.props.navigation.state.params.textTel),
+          data: {
+            textTel: this.state.textTel,
+            password: this.state.password,
+            imgUrl: source,
+            nickName: this.state.nickName,
+          }
+        });
       }
     });
   }
@@ -77,6 +126,13 @@ export default class Setting extends Component {
   render() {
     return (
         <View style={styles.container}>
+          <View style={styles.NavBar}>
+            <TouchableOpacity style={styles.touch} onPress={()=> this.onPress()}>
+              <Icon1 name="ios-arrow-back" size={30} color={'black'} />
+            </TouchableOpacity>
+            <Text style={styles.textStyle}>设置</Text>
+            <View/>
+          </View>
           <TouchableOpacity
               onPress={this.selectPhotoTapped.bind(this)}
               style={styles.row1Style}
@@ -93,7 +149,7 @@ export default class Setting extends Component {
           </TouchableOpacity>
           <TouchableOpacity
               style={styles.row3Style}
-              onPress={() => this.props.navigation.navigate('ChangeName')}
+              onPress={() => this.props.navigation.navigate('ChangeName', {textTel: this.state.textTel})}
           >
             <View style={styles.row4Style}>
               <View>
@@ -106,7 +162,7 @@ export default class Setting extends Component {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('ChangeTel')}
+              onPress={() => this.props.navigation.navigate('ChangeTel', {textTel: this.state.textTel})}
               style={styles.row3Style}
           >
             <View style={styles.row4Style}>
@@ -114,16 +170,16 @@ export default class Setting extends Component {
                 <Text style={styles.textStyle}>手机号</Text>
               </View>
               <View style={styles.leftStyle}>
-                <Text style={styles.textStyle}>{this.state.phoneNum}</Text>
+                <Text style={styles.textStyle}>{this.state.textTel}</Text>
                 <Image source={require('../../../res/images/ahead.png')} style={styles.image2Style}/>
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('ChangePassword')} style={styles.row3Style}>
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('ChangePassword', {textTel: this.state.textTel})} style={styles.row3Style}>
             <View style={styles.row4Style}>
-              <View>
+              <TouchableOpacity>
                 <Text style={styles.textStyle}>修改密码</Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.leftStyle}>
                 <Image source={require('../../../res/images/ahead.png')} style={styles.image2Style}/>
               </View>
@@ -132,11 +188,31 @@ export default class Setting extends Component {
         </View>
     );
   }
+
+  onPress() {
+    DeviceEventEmitter.emit('textTel', JSON.stringify(this.state.textTel));
+    this.props.navigation.pop();
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  NavBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 60,
+    backgroundColor: 'white',
+    borderBottomWidth: 0.3,
+    borderBottomColor: 'gray',
+  },
+  touch: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 16,
+    height: 25,
   },
   row1Style: {
     backgroundColor: 'white',

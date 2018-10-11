@@ -20,6 +20,14 @@ export default class ChangeTel extends Component{
         <View/>
     ),
   };
+
+  constructor(props) {
+    super(props);
+    this.state={
+      textTel: this.props.navigation.state.params.textTel,
+    }
+  }
+
   render(){
     const { params } = this.props.navigation.state;
     return(
@@ -28,9 +36,9 @@ export default class ChangeTel extends Component{
               style={styles.image}
               source={require('../../../res/images/Tel.png')}
           />
-          <Text style={styles.text}>你的手机号:</Text>
+          <Text style={styles.text}>你的手机号:{this.state.textTel}</Text>
           <TouchableOpacity
-              onPress={()=>this.props.navigation.navigate('TelChange')}
+              onPress={()=>this.props.navigation.navigate('TelChange', {textTel: this.state.textTel})}
               style={styles.touch}
           >
             <Text style={{fontSize:19,color:'black'}}>修改手机号</Text>

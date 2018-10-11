@@ -1,27 +1,49 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TextInput, TouchableOpacity, Dimensions} from 'react-native';
+import {StyleSheet, View, Text, TextInput, TouchableOpacity, Dimensions, DeviceEventEmitter} from 'react-native';
 const {width} = Dimensions.get('window');
 import * as ScreenUtils from '../../Common/ScreenUtils';
 import Icon1 from "react-native-vector-icons/Ionicons";
+import storage from '../../Common/StorageConfig';
 
 export default class ChangeName extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      text: '',
+      textTel: '',
+      password:'',
+      imgUrl:'',
+      nickName:'',
     }
   }
+
+  componentDidMount() {
+      storage.load({
+        key:JSON.stringify(this.props.navigation.state.params.textTel),
+        autoSync: true,
+        syncInBackground: true,
+      }).then((ret)=> {
+        this.setState({
+          textTel: ret.textTel,
+          password: ret.password,
+          imgUrl: ret.imgUrl,
+          nickName: ret.nickName,
+        })
+      }).catch((error)=> {
+        console.log(error);
+      })
+  }
+
 
   render() {
     return (
         <View style={styles.container}>
           <View style={styles.NavBar}>
-            <TouchableOpacity style={styles.touch} onPress={()=> this.props.navigation.pop()}>
+            <TouchableOpacity style={styles.touch} onPress={()=> this.onPress()}>
               <Icon1 name="ios-arrow-back" size={30} color={'black'} />
               <Text style={styles.textStyle}>设置</Text>
             </TouchableOpacity>
             <Text style={styles.title}>修改昵称</Text>
-            <TouchableOpacity onPress={()=> this.props.navigation.pop()}>
+            <TouchableOpacity onPress={()=> this.onPress()}>
               <Text style={{color:'black',fontSize:ScreenUtils.setSpText(18),marginRight:ScreenUtils.scaleSize(25)}}>完成</Text>
             </TouchableOpacity>
           </View>
@@ -29,10 +51,24 @@ export default class ChangeName extends Component{
             style={styles.textInput}
             placeholder='请输入昵称'
             underlineColorAndroid='transparent'
-            onChangeText={(text)=> this.setState({text: text})}
+            onChangeText={(text)=> this.setState({nickName: text})}
           />
         </View>
     )
+  }
+
+  onPress() {
+    storage.save({
+      key: JSON.stringify(this.props.navigation.state.params.textTel),
+      data:{
+        textTel: this.state.textTel,
+        password: this.state.password,
+        imgUrl: this.state.imgUrl,
+        nickName: this.state.nickName,
+      }
+    });
+    DeviceEventEmitter.emit('setting', this.props.navigation.state.params.textTel);
+    this.props.navigation.pop();
   }
 }
 

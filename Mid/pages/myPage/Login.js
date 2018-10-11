@@ -2,7 +2,7 @@
  * 登陆界面
  */
 import React, {Component} from 'react';
-import {StyleSheet, StatusBar, Image, Text, View, TouchableOpacity, Keyboard, Dimensions, Picker, TextInput} from 'react-native';
+import {StyleSheet, StatusBar, Image, Text, View, TouchableOpacity, Keyboard, Dimensions, Picker, TextInput, DeviceEventEmitter} from 'react-native';
 import * as ScreenUtils from '../Common/ScreenUtils';
 import storage from '../Common/StorageConfig';
 
@@ -116,19 +116,23 @@ export default class Login extends Component{
       this.setState({
         havePassWord: ret.password,
         canLogin: 'true',
-      })
+      });
+      if(this.state.canLogin) {
+        if(this.state.havePassWord === this.state.password){
+          DeviceEventEmitter.emit('textTel',JSON.stringify(this.state.textTel));
+          this.props.navigation.pop();
+          this.setState({
+            canLogin: false
+          })
+        }else {
+          alert('密码错误')
+        }
+      }else {
+        alert('不能登陆')
+      }
     }).catch((error)=> {
       alert('该手机号未注册')
     });
-    if(this.state.canLogin) {
-      if(this.state.havePassWord === this.state.password){
-        this.props.navigation.pop();
-      }else {
-        alert('请输入正确密码')
-      }
-    }else {
-      alert('不能登陆')
-    }
   }
 
   LoginSwitchOne() {

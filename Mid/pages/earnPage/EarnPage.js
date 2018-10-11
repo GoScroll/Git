@@ -98,17 +98,17 @@ export default class EarnPage extends Component{
 
     _header=()=>{
         return <View style={styles.container2}>
-            <Image resizemode={'contain'} style={styles.image} source={require('../../res/Images/banner3.png')}/>
+            <Image resizemode={'contain'} style={styles.image} source={require('../../res/images/banner3.png')}/>
             <View style={styles.crow}>
                 <TouchableOpacity style={styles.rowStyle}>
                     <View style={styles.rightStyle}>
-                        <Image style={{width:ScreenUtils.scaleSize(122),height:ScreenUtils.scaleSize(32)}} source={require('../../res/Images/米米快报.png')}/>
+                        <Image style={{width:ScreenUtils.scaleSize(122),height:ScreenUtils.scaleSize(32)}} source={require('../../res/images/米米快报.png')}/>
                         <Text style={{paddingTop:ScreenUtils.scaleSize(19),paddingBottom:ScreenUtils.scaleSize(19),paddingLeft:ScreenUtils.scaleSize(13),color:'red',fontSize:ScreenUtils.setSpText(15)}}>恭喜</Text>
                         <Text numberOfLines={1}
                               ellipsizeMode='tail'
                               style={styles.reportText}
                         >{Report[0].text}</Text>
-                        <Image source={require('../../res/Images/ahead.png')} style={styles.icon02}/>
+                        <Image source={require('../../res/images/ahead.png')} style={styles.icon02}/>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -122,7 +122,7 @@ export default class EarnPage extends Component{
                     <Text style={styles.redTextStyle}>66元</Text>
                 </View>
                 <View style={{alignItems:'center'}}>
-                    <Image source={require('../../res/Images/yaoqinghaoyou.png')} style={styles.imageStyle}/>
+                    <Image source={require('../../res/images/yaoqinghaoyou.png')} style={styles.imageStyle}/>
                 </View>
                 <TouchableOpacity onPress={()=>this.showRewardRules()} style={{alignItems:'center'}}>
                     <Text style={styles.buttonTextStyle}>点击查看奖励规则 ></Text>
@@ -137,7 +137,7 @@ export default class EarnPage extends Component{
                     <TouchableOpacity
                         onPress={()=>this.showShareActionSheet()}
                     >
-                        <Image source={require('../../res/Images/weixin.png')} style={styles.iconStyle}/>
+                        <Image source={require('../../res/images/weixin.png')} style={styles.iconStyle}/>
                         <View style={styles.shareButton}>
                             <Text>微信</Text>
                         </View>
@@ -145,7 +145,7 @@ export default class EarnPage extends Component{
                     <TouchableOpacity
                         onPress={()=>this.showShareActionSheet()}
                     >
-                        <Image source={require('../../res/Images/pengyouquan.png')} style={styles.iconStyle}/>
+                        <Image source={require('../../res/images/pengyouquan.png')} style={styles.iconStyle}/>
                         <View style={styles.shareButton}>
                             <Text>朋友圈</Text>
                         </View>
@@ -153,7 +153,7 @@ export default class EarnPage extends Component{
                     <TouchableOpacity
                         onPress={()=>this.showShareActionSheet()}
                     >
-                        <Image source={require('../../res/Images/QQ.png')} style={styles.iconStyle}/>
+                        <Image source={require('../../res/images/QQ.png')} style={styles.iconStyle}/>
                         <View style={styles.shareButton}>
                             <Text>QQ</Text>
                         </View>
@@ -161,7 +161,7 @@ export default class EarnPage extends Component{
                     <TouchableOpacity
                         onPress={()=>this.showShareActionSheet()}
                     >
-                        <Image source={require('../../res/Images/qqkongjian.png')} style={styles.iconStyle}/>
+                        <Image source={require('../../res/images/qqkongjian.png')} style={styles.iconStyle}/>
                         <View style={styles.shareButton}>
                             <Text>QQ空间</Text>
                         </View>

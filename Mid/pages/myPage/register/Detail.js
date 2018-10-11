@@ -75,6 +75,7 @@ export default class Detail extends Component{
         storage.save({
           key:JSON.stringify(this.state.textTel),
           data: {
+            textTel: this.state.textTel,
             nickName: this.state.nickName,
             password: this.state.password1,
           }
