@@ -63,12 +63,12 @@ export default class Change_TelProve extends Component{
     let inputs = [];
     const {inputTexts} = this.state;
     for (let i = 0; i < 6; i++) {
-      let input = <view>
+      let input = <View style={styles.Inputs}>
           <Text
           key={i}>
         {inputTexts[i]}
       </Text>
-    </view>;
+    </View>;
       inputs.push(input);
     }
     return inputs;
@@ -168,5 +168,14 @@ const styles=StyleSheet.create({
   },
   textInput:{
     width: ScreenUtil.scaleSize(95),
-  }
+  },
+    Inputs: {
+        width: ScreenUtil.scaleSize(95),
+        height: ScreenUtil.scaleSize(80),
+        justifyContent: 'center',
+        alignItems:'center',
+        marginHorizontal: 5,
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1,
+    }
 });

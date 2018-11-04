@@ -47,6 +47,7 @@
 		56BCC59242914742B96FE0D6 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CFF845D3E04DDFBB8D5C3A /* CoreFoundation.framework */; };
 		5901541C390E4A0EB236126D /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EE5A32BE94D40319B50DF95 /* FontAwesome5_Brands.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		75171E2B218F3046000D45BC /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 75171E2A218F3046000D45BC /* ios */; };
 		7534B628217F8BEB00E0513B /* bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7534B627217F8BEB00E0513B /* bundle */; };
 		755B6304215E7B5D008FE00F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 755B62DD215E7B5D008FE00F /* Images.xcassets */; };
 		75DC45E72135471E001EBDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DC45E62135471E001EBDBB /* SystemConfiguration.framework */; };
@@ -404,6 +405,7 @@
 		5524B2171E5D4C5BA0E35CC3 /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6282A450209D40BBB74F34C2 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		75171E2A218F3046000D45BC /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; path = "../node_modules/react-native-image-picker/ios"; sourceTree = "<group>"; };
 		7534B627217F8BEB00E0513B /* bundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bundle; sourceTree = "<group>"; };
 		755B62DD215E7B5D008FE00F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Mld/Images.xcassets; sourceTree = "<group>"; };
 		75DC45E62135471E001EBDBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -639,6 +641,7 @@
 				75DC45F421354B95001EBDBB /* UMSocial */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				75171E2A218F3046000D45BC /* ios */,
 				755B62DD215E7B5D008FE00F /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -1040,7 +1043,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = GVCC7N2J83;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1444,6 +1447,7 @@
 				393A093335854B15A9197D36 /* MaterialIcons.ttf in Resources */,
 				CFE60069F6F641C99775AF71 /* Octicons.ttf in Resources */,
 				7FA66F832E2D4E1FBF170ED1 /* SimpleLineIcons.ttf in Resources */,
+				75171E2B218F3046000D45BC /* ios in Resources */,
 				755B6304215E7B5D008FE00F /* Images.xcassets in Resources */,
 				75DC461721354B95001EBDBB /* UMSocialSDKPromptResources.bundle in Resources */,
 				3EB93C452F264D26815DCFE0 /* Zocial.ttf in Resources */,
@@ -1660,10 +1664,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mld/Mld.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GVCC7N2J83;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UMSocial/UMSocialUI",
@@ -1704,8 +1708,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shumei.Demo;
 				PRODUCT_NAME = Mld;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "28b88740-64ce-475f-ab63-7e4ff56dfd51";
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1717,9 +1721,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mld/Mld.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GVCC7N2J83;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UMSocial/UMSocialUI",
@@ -1760,8 +1764,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shumei.Demo;
 				PRODUCT_NAME = Mld;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "28b88740-64ce-475f-ab63-7e4ff56dfd51";
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

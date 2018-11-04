@@ -48,7 +48,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.4</string>
+	<string>1.0.6</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -118,7 +118,7 @@
 	<string>App需要您的同意,才能访问相册</string>
 	<key>Privacy - Location Always Usage Description </key>
 	<string>需要您的同意,才能始终访问位置</string>
-	<key>UIAppFonts</key>
+	<key>UIAppFsonts</key>
 	<array>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>

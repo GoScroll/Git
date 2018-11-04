@@ -6,7 +6,7 @@ import {
     StyleSheet,
     TouchableOpacity,
     StatusBar,
-    DeviceEventEmitter
+    DeviceEventEmitter, Platform
 } from 'react-native';
 import * as ScreenUtils from "../Common/ScreenUtils";
 import NetUtils from "../Common/NetUtils";
@@ -42,8 +42,8 @@ export default class Setting extends Component {
         }
     });
     state = {
-        avatarSource: ' ',
-        videoSource: ' '
+        avatarSource: null,
+        videoSource: null
     };
     componentDidMount() {
         DeviceEventEmitter.addListener('NoticeName', (value)=>{
