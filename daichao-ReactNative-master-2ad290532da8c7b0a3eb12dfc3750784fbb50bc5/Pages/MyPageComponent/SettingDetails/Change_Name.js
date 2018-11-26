@@ -7,13 +7,12 @@ import {
     TouchableOpacity,
     TextInput,
     Dimensions,
-    Image,
     DeviceEventEmitter,
     Alert, Platform
 } from 'react-native';
 import * as ScreenUtils from "../../Common/ScreenUtils";
 let {width, height} = Dimensions.get('window');
-// import Icon1 from "react-native-vector-icons/Ionicons";
+import Icon1 from "react-native-vector-icons/Ionicons";
 import NetUtils from "../../Common/NetUtils";
 let url = 'http://47.98.148.58/app/user/changeNickName.do';
 let isIphoneX = (Platform.OS === 'ios' && (Number(((height/width)+"").substr(0,4)) * 100) === 216);
@@ -99,7 +98,7 @@ export default class Change_Name extends Component {
             <TouchableOpacity
                 style={{flexDirection:'row', alignItems: 'center', marginLeft: 16, height: 25,}}
                 onPress={() => this.props.navigation.pop()}>
-              <Image style={{height:20, width:20}} source={require('../../../res/Images/back.png')}/>
+              <Icon1 name="ios-arrow-back" size={30} color={'black'} />
             </TouchableOpacity>
             <Text style={{color:'black',fontSize:ScreenUtils.setSpText(18), fontWeight: 'bold'}}>修改昵称</Text>
             <TouchableOpacity

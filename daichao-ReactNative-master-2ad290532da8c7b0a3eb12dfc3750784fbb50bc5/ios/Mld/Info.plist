@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Mld</string>
+	<string>米米来</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -48,7 +48,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.6</string>
+	<string>1.0.7</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -118,7 +118,7 @@
 	<string>App需要您的同意,才能访问相册</string>
 	<key>Privacy - Location Always Usage Description </key>
 	<string>需要您的同意,才能始终访问位置</string>
-	<key>UIAppFsonts</key>
+	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
@@ -144,8 +144,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

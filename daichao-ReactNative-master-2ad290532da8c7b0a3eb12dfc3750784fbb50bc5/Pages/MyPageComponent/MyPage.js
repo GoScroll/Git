@@ -21,6 +21,8 @@ let url = 'http://47.98.148.58/app/user/showUserInfo.do';
 let URL = 'http://47.98.148.58/app/user/logoff.do';
 let Url = "http://47.98.148.58/app/user/versionCheckAndUpd.do";
 let URl = "http://47.98.148.58/dc/dcweb/apkDownLoad.html";
+let ChangeUrl = "http://47.98.148.58/app/dcPublic/checkInfoChange.do";
+let ChangeURL = "http://47.98.148.58/app/dcPublic/checkInfoChange.do";
 let isIphoneX = (Platform.OS === 'ios' && (Number(((height/width)+"").substr(0,4)) * 100) === 216);
 export default class MyPage extends Component {
 
@@ -36,7 +38,8 @@ export default class MyPage extends Component {
             tel: 6324,
             userName: '',
             callback: 0,
-            intro:''
+            intro:'',
+            isChange: '',
         }
     }
 
@@ -58,7 +61,17 @@ export default class MyPage extends Component {
                 this.setState({
                     result: JSON.stringify(error),
                 })
+            });
+        fetch(ChangeURL)
+            .then((response) => response.json())   //数据解析方式,获取到网络请求返回的对象
+            .then((result) => {              //网络请求成功，处理获取到的数据
+                this.setState({
+                    isChange:result.data.is_pub,
+                });
             })
+            .catch((error) => {                    //网络请求失败，错误处理，否则网络请求失败是无法看到错误信息
+                console.error(error);
+            });
     }
 
     componentDidMount() {
@@ -281,6 +294,42 @@ export default class MyPage extends Component {
         }
     }
 
+    Checkrelease() {
+        if (this.state.isChange === '1') {
+            if (this.state.login) {
+                return (
+                    <TouchableOpacity
+                        style={styles.rowStyle}
+                        onPress={() => this.props.navigation.navigate('ReleaseList', {title:'我的发布'})}
+                    >
+                        <View style={styles.leftStyle}>
+                            <Image source={require('../../res/Images/wodeyaoqing.png')} style={styles.icon03}/>
+                        </View>
+                        <View style={styles.rightStyle}>
+                            <Text style={styles.listFont}>我的发布</Text>
+                            <Image source={require('../../res/Images/ahead.png')} style={styles.icon02}/>
+                        </View>
+                    </TouchableOpacity>
+                );
+            } else {
+                return (
+                    <TouchableOpacity
+                        style={styles.rowStyle}
+                        onPress={() => this.props.navigation.navigate('Second')}
+                    >
+                        <View style={styles.leftStyle}>
+                            <Image source={require('../../res/Images/wodeyaoqing.png')} style={styles.icon03}/>
+                        </View>
+                        <View style={styles.rightStyle}>
+                            <Text style={styles.listFont}>我的发布</Text>
+                            <Image source={require('../../res/Images/ahead.png')} style={styles.icon02}/>
+                        </View>
+                    </TouchableOpacity>
+                )
+            }
+        }
+    }
+
     CheckAward() {
         if (this.state.login) {
             return (
@@ -431,6 +480,7 @@ export default class MyPage extends Component {
 
             <View>
                 {this.CheckInvite()}
+                {this.Checkrelease()}
                 {this.CheckCode()}
                 {this.CheckAward()}
                 <TouchableOpacity

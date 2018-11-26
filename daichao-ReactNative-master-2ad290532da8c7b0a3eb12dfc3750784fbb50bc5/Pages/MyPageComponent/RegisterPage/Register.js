@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import NetUtils from "../../Common/NetUtils";
 const {width} = Dimensions.get('window');
-let url = 'http://47.98.148.58/app/user/userRegisterSendIdentifyCode.do';
+let url = 'http://47.98.148.58/app/user/enrollTel.do';
 export default class Register extends Component{
     constructor(props){
         super(props);

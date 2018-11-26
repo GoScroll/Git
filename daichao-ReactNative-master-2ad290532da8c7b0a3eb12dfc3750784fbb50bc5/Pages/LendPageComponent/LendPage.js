@@ -28,6 +28,7 @@ let isIphoneX = (Platform.OS === 'ios' && (Number(((height/width)+"").substr(0,4
 let url = 'http://47.98.148.58/app/goods/homePage.do';
 let Url = 'http://47.98.148.58/app/goods/clickCount.do';
 let URL = 'http://47.98.148.58/app/user/checkUserStatusByTkid.do';
+let ChangeURL = "http://47.98.148.58/app/dcPublic/showPubNote.do";
 let Index = 0;
 export default class LendPage extends Component {
     constructor(props) {
@@ -67,6 +68,7 @@ export default class LendPage extends Component {
             tab3Id: '',
             tab4Id: '',
             tab5Id: '',
+            isChange: 0,
         }
     }
 
@@ -276,8 +278,10 @@ export default class LendPage extends Component {
         this.utils.fetchNetRepository(url,
             {"pageNo": Page})
             .then(result => {
+                this.setState({
+                    isChange:result.data.isPub,
+                });
                 let data = result.data.commodityList;
-
                 let length = result.data.total;
                 let page = parseInt(length / 10) + 1;
                 let datas = [];
@@ -484,6 +488,22 @@ export default class LendPage extends Component {
             })
     }
 
+    // onChangePush(id) {
+    //     this.utils.fetchNetRepository(ChangeURL,
+    //         {"gds_id": id},
+    //     )
+    //         .then((result)=> {
+    //             this.setState({
+    //                 Arraydatas:result
+    //             })
+    //         })
+    //         .catch(error => {
+    //             this.setState({
+    //                 result: JSON.stringify(error),
+    //             })
+    //         })
+    // }
+
     CheckTab1 = ({item}) => {
         if (item.value.commodityTagFirst[0] === "" || item.value.commodityTagFirst[0] === null) {
             return <View/>
@@ -538,49 +558,91 @@ export default class LendPage extends Component {
 
 
     ViewList = ({item}) => {
-        return (
-            <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
-                <TouchableOpacity
-                    onPress={() => {
-                        this.onPush(item.value.commodityId);
-                        this.props.navigation.navigate('WebPage', {url: item.value.commodityUrl, ...this.props})
-                    }}
-                >
-                    <View style={styles.wrap}>
-                        <View style={{flexDirection: 'row'}}>
-                            <Image source={{uri: item.value.commodityInco}}
-                                   style={styles.icon}
-                            />
-                            <View style={styles.two}>
-                                <View style={{flexDirection: 'row'}}>
+        if (this.state.isChange === 0) {
+            return (
 
-                                    <Text style={{
-                                        color: 'black',
-                                        fontSize: ScreenUtils.setSpText(15.5),
-                                        paddingBottom: 7
-                                    }}>{item.value.commodityName}</Text>
+                <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.onPush(item.value.commodityId);
+                            this.props.navigation.navigate('WebPage', {url: item.value.commodityUrl, ...this.props})
+                        }}
+                    >
+                        <View style={styles.wrap}>
+                            <View style={{flexDirection: 'row'}}>
+                                <Image source={{uri: item.value.commodityInco}}
+                                       style={styles.icon}
+                                />
+                                <View style={styles.two}>
+                                    <View style={{flexDirection: 'row'}}>
 
-                                    {this.CheckTab1({item})}
-                                    {this.CheckTab2({item})}
-                                    {this.Checkdk({item})}
+                                        <Text style={{
+                                            color: 'black',
+                                            fontSize: ScreenUtils.setSpText(15.5),
+                                            paddingBottom: 7
+                                        }}>{item.value.commodityName}</Text>
 
+                                        {this.CheckTab1({item})}
+                                        {this.CheckTab2({item})}
+                                        {this.Checkdk({item})}
+
+                                    </View>
+                                    <Text
+                                        numberOfLines={1}
+                                        ellipsizeMode='tail'
+                                        style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
+                                    >{item.value.commodityText}</Text>
                                 </View>
-                                <Text
-                                    numberOfLines={1}
-                                    ellipsizeMode='tail'
-                                    style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
-                                >{item.value.commodityText}</Text>
-                            </View>
 
+                            </View>
+                            <Image
+                                style={styles.ahead}
+                                source={require('../../res/Images/ahead.png')}
+                            />
                         </View>
-                        <Image
-                            style={styles.ahead}
-                            source={require('../../res/Images/ahead.png')}
-                        />
-                    </View>
-                </TouchableOpacity>
-            </View>
-        );
+                    </TouchableOpacity>
+                </View>
+            )
+        } else {
+            return (
+                <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            // this.onChangePush(item.value.commodityId);
+                            this.props.navigation.navigate('LendRelease', {title:'米米圈', id:item.value.commodityId})
+                        }}
+                    >
+                        <View style={styles.wrap}>
+                            <View style={{flexDirection: 'row'}}>
+                                <Image source={{uri: item.value.commodityInco}}
+                                       style={styles.icon}
+                                />
+                                <View style={styles.two}>
+                                    <View style={{flexDirection: 'row'}}>
+
+                                        <Text style={{
+                                            color: 'black',
+                                            fontSize: ScreenUtils.setSpText(15.5),
+                                            paddingBottom: 7
+                                        }}>{item.value.commodityName}</Text>
+                                    </View>
+                                    <Text
+                                        numberOfLines={1}
+                                        ellipsizeMode='tail'
+                                        style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
+                                    >{item.value.commodityText}</Text>
+                                </View>
+
+                            </View>
+                            <Image
+                                style={styles.ahead}
+                                source={require('../../res/Images/ahead.png')}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            )
+        }
     };
 
 }

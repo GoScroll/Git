@@ -16,7 +16,6 @@ import JPushModule from "jpush-react-native/index";
 const {width} = Dimensions.get('window');
 let url = 'http://47.98.148.58/app/user/enrollInfo.do';
 let URL = 'http://47.98.148.58/app/user/setRegistrationId.do';
-let URl = 'http://mimilike.cn/dc/dcweb/userAgreement.htm';
 export default class Detail extends Component{
     constructor(props){
         super(props);
@@ -161,7 +160,7 @@ export default class Detail extends Component{
                 <View style={styles.partThree}>
                     <Text>点击完成，表示你已同意</Text>
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('WebPage', {url: URl, ...this.props})}
+                        onPress={()=>{}}
                     >
                         <Text style={{color:'blue'}}>《米米来用户协议》</Text>
                     </TouchableOpacity>

@@ -31,7 +31,9 @@ import MyWeChat from "./MyPageComponent/SectionComponent/MyWeChat";
 import LoginProve from "./MyPageComponent/LoginProve";
 import MyEarn from "./MyPageComponent/SectionComponent/MyEarn";
 import RewardRules from "./EarnPageComponent/RewardRules";
-
+import Release from "./MyPageComponent/SectionComponent/Release";
+import ReleaseList from "./MyPageComponent/SectionComponent/ReleaseList";
+import LendRelease from './LendPageComponent/LendRelease';
 const Root = StackNavigator({
         Home: {
             screen: StartPage,
@@ -131,6 +133,24 @@ const Root = StackNavigator({
                 headerRight: (
                     <View/>
                 )
+            }
+        },
+        LendRelease: {
+            screen: LendRelease,
+            navigationOptions: {
+                title:' ',
+            }
+        },
+        ReleaseList: {
+            screen: ReleaseList,
+            navigationOptions: {
+                title:' ',
+            }
+        },
+        Release: {
+            screen: Release,
+            navigationOptions: {
+               header:null,
             }
         },
         Change_Name: {

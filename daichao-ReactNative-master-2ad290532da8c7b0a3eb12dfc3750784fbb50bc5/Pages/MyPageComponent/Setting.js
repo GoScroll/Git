@@ -6,7 +6,7 @@ import {
     StyleSheet,
     TouchableOpacity,
     StatusBar,
-    DeviceEventEmitter, Platform
+    DeviceEventEmitter
 } from 'react-native';
 import * as ScreenUtils from "../Common/ScreenUtils";
 import NetUtils from "../Common/NetUtils";
@@ -42,8 +42,8 @@ export default class Setting extends Component {
         }
     });
     state = {
-        avatarSource: null,
-        videoSource: null
+        avatarSource: ' ',
+        videoSource: ' '
     };
     componentDidMount() {
         DeviceEventEmitter.addListener('NoticeName', (value)=>{
@@ -83,7 +83,7 @@ export default class Setting extends Component {
             }
         };
 
-        ImagePicker.showImagePicker(options, (response) => {
+        ImagePicker.launchImageLibrary(options, (response) => {
 
             if (response.didCancel) {
             }
@@ -95,7 +95,7 @@ export default class Setting extends Component {
                 /*let source = {uri: response.uri};*/
 
                 // You can also display the image using data:
-                let source = { uri: 'data:image/jpeg;base64,' + response.data };
+                let source = { uri: 'data:image/jpeg;base64,' + response.data};
 
                 this.setState({
                     avatarSource: source,

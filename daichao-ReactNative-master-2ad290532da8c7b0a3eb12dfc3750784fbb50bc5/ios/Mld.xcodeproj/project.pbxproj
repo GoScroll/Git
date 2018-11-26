@@ -24,7 +24,6 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		17B5928D06884F77874315AA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8FFCDBFAD1941C6A5565D04 /* FontAwesome.ttf */; };
 		1DB13C968DFC4F6FA24D8871 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B1DC66081C048C7B7CA076F /* EvilIcons.ttf */; };
-		2AB5A1AF26AC4D41B2D5C35E /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779A1FB7A0094E06BB15C875 /* libRNCookieManagerIOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -39,17 +38,19 @@
 		2E8B96CDC96F4ECFB046DDCC /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0BF94002C274680BC5B765D /* Foundation.ttf */; };
 		3118DA9F935947E0870D4E79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E79A243D95437C82EB426E /* Foundation.framework */; };
 		32DD7867F9C14D849C03E8BD /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0A31EF5BCA4822A41D69A6 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		33426C831D6C4CD2A9662786 /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52786985CDED40DA8FF98D24 /* libRCTJPushModule.a */; };
-		38CD3CA721A74CB68DDB4E78 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D0F5F452264982A38E3ECE /* libRNImagePicker.a */; };
 		393A093335854B15A9197D36 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B51AFBD98A64049BAA76879 /* MaterialIcons.ttf */; };
 		3CC5BB6C6EEA40DE949908A1 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6282A450209D40BBB74F34C2 /* Feather.ttf */; };
 		3EB93C452F264D26815DCFE0 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A91C5FB50124AD2985918C1 /* Zocial.ttf */; };
 		56BCC59242914742B96FE0D6 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CFF845D3E04DDFBB8D5C3A /* CoreFoundation.framework */; };
 		5901541C390E4A0EB236126D /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EE5A32BE94D40319B50DF95 /* FontAwesome5_Brands.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		75171E2B218F3046000D45BC /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 75171E2A218F3046000D45BC /* ios */; };
-		7534B628217F8BEB00E0513B /* bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7534B627217F8BEB00E0513B /* bundle */; };
 		755B6304215E7B5D008FE00F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 755B62DD215E7B5D008FE00F /* Images.xcassets */; };
+		756270212191BE5C0027AC1F /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754A341D2134331A00D9A831 /* libRNCookieManagerIOS.a */; };
+		756270222191BE630027AC1F /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754A34202134331A00D9A831 /* libRNImagePicker.a */; };
+		756270232191BE690027AC1F /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754A34232134331A00D9A831 /* libRNVectorIcons.a */; };
+		756270242191BE780027AC1F /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E2213F21424BD200829264 /* libRCTJCoreModule.a */; };
+		756270252191BE800027AC1F /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E2214421424BD300829264 /* libRCTJPushModule.a */; };
+		75CA6BA721ABE21500B6F163 /* bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75CA6BA621ABE21500B6F163 /* bundle */; };
 		75DC45E72135471E001EBDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DC45E62135471E001EBDBB /* SystemConfiguration.framework */; };
 		75DC45E921354728001EBDBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DC45E821354728001EBDBB /* CoreGraphics.framework */; };
 		75DC45EB21354731001EBDBB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DC45EA21354731001EBDBB /* CoreTelephony.framework */; };
@@ -78,7 +79,6 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		87DEE6342A7D4C41A0EEAD2B /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C70D2A995C35442C9B0B4B3E /* FontAwesome5_Solid.ttf */; };
 		89B90301005942F3AA0503A2 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE56B18BDAC34B60BA45D683 /* MaterialCommunityIcons.ttf */; };
-		961AB40BC9C440A49EB0ACC1 /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFE10655F934571BFAA9D10 /* libRCTJCoreModule.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B646B99154924EB58A8252E0 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E88B468FB89462BA2050CAD /* Entypo.ttf */; };
 		B7880DEDB2224776AA43B747 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F5EFA5E0DF481386C63A1F /* Security.framework */; };
@@ -86,7 +86,6 @@
 		CFE60069F6F641C99775AF71 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC85B9081F8247469ECEA16E /* Octicons.ttf */; };
 		D56A88C0BBDF44B8A9CEC3BE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51DB28D8CDB43879CEAE753 /* CFNetwork.framework */; };
 		DF2D1C521BE342BD9BE367EB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5524B2171E5D4C5BA0E35CC3 /* UIKit.framework */; };
-		FFC797ACD43644BDAB4FF211 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA0B8FD07DD42C294D0D7D4 /* libRNVectorIcons.a */; };
 		FFEA087AA7C245CFAA8BBC73 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2E7439FD014406A92207995 /* FontAwesome5_Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -405,9 +404,8 @@
 		5524B2171E5D4C5BA0E35CC3 /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6282A450209D40BBB74F34C2 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		75171E2A218F3046000D45BC /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; path = "../node_modules/react-native-image-picker/ios"; sourceTree = "<group>"; };
-		7534B627217F8BEB00E0513B /* bundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bundle; sourceTree = "<group>"; };
 		755B62DD215E7B5D008FE00F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Mld/Images.xcassets; sourceTree = "<group>"; };
+		75CA6BA621ABE21500B6F163 /* bundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bundle; sourceTree = "<group>"; };
 		75DC45E62135471E001EBDBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		75DC45E821354728001EBDBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		75DC45EA21354731001EBDBB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -478,6 +476,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				756270252191BE800027AC1F /* libRCTJPushModule.a in Frameworks */,
+				756270242191BE780027AC1F /* libRCTJCoreModule.a in Frameworks */,
+				756270232191BE690027AC1F /* libRNVectorIcons.a in Frameworks */,
+				756270222191BE630027AC1F /* libRNImagePicker.a in Frameworks */,
+				756270212191BE5C0027AC1F /* libRNCookieManagerIOS.a in Frameworks */,
 				75DC462221354B95001EBDBB /* libSocialQQ.a in Frameworks */,
 				75DC461D21354B95001EBDBB /* FBSDKMessengerShareKit.framework in Frameworks */,
 				75DC45F321354757001EBDBB /* libz.tbd in Frameworks */,
@@ -512,11 +515,6 @@
 				75DC461521354B95001EBDBB /* UShareUI.framework in Frameworks */,
 				75DC462021354B95001EBDBB /* Bolts.framework in Frameworks */,
 				75DC461821354B95001EBDBB /* UMSocialCore.framework in Frameworks */,
-				2AB5A1AF26AC4D41B2D5C35E /* libRNCookieManagerIOS.a in Frameworks */,
-				38CD3CA721A74CB68DDB4E78 /* libRNImagePicker.a in Frameworks */,
-				FFC797ACD43644BDAB4FF211 /* libRNVectorIcons.a in Frameworks */,
-				961AB40BC9C440A49EB0ACC1 /* libRCTJCoreModule.a in Frameworks */,
-				33426C831D6C4CD2A9662786 /* libRCTJPushModule.a in Frameworks */,
 				32DD7867F9C14D849C03E8BD /* UserNotifications.framework in Frameworks */,
 				B7880DEDB2224776AA43B747 /* Security.framework in Frameworks */,
 				D56A88C0BBDF44B8A9CEC3BE /* CFNetwork.framework in Frameworks */,
@@ -634,14 +632,13 @@
 		13B07FAE1A68108700A75B9A /* Mld */ = {
 			isa = PBXGroup;
 			children = (
-				7534B627217F8BEB00E0513B /* bundle */,
+				75CA6BA621ABE21500B6F163 /* bundle */,
 				75E2214521424C7100829264 /* Mld.entitlements */,
 				75DC465821355050001EBDBB /* sharemodule.m */,
 				75DC463321355024001EBDBB /* sharemodule.h */,
 				75DC45F421354B95001EBDBB /* UMSocial */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				75171E2A218F3046000D45BC /* ios */,
 				755B62DD215E7B5D008FE00F /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -864,6 +861,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A185C8E867514568AFF709AB /* RNImagePicker.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -877,7 +875,6 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				812A817F33E94BC3B4B01FA0 /* RNCookieManagerIOS.xcodeproj */,
-				A185C8E867514568AFF709AB /* RNImagePicker.xcodeproj */,
 				3DF42D013F2444FB93752C96 /* RNVectorIcons.xcodeproj */,
 				9444DB49D2D74C96ADB86243 /* RCTJCoreModule.xcodeproj */,
 				B3177A8EE89043C3B417ED30 /* RCTJPushModule.xcodeproj */,
@@ -1447,12 +1444,11 @@
 				393A093335854B15A9197D36 /* MaterialIcons.ttf in Resources */,
 				CFE60069F6F641C99775AF71 /* Octicons.ttf in Resources */,
 				7FA66F832E2D4E1FBF170ED1 /* SimpleLineIcons.ttf in Resources */,
-				75171E2B218F3046000D45BC /* ios in Resources */,
 				755B6304215E7B5D008FE00F /* Images.xcassets in Resources */,
 				75DC461721354B95001EBDBB /* UMSocialSDKPromptResources.bundle in Resources */,
 				3EB93C452F264D26815DCFE0 /* Zocial.ttf in Resources */,
 				75DC461421354B95001EBDBB /* UMSocialSDKResources.bundle in Resources */,
-				7534B628217F8BEB00E0513B /* bundle in Resources */,
+				75CA6BA721ABE21500B6F163 /* bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1664,6 +1660,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mld/Mld.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -1708,7 +1705,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shumei.Demo;
 				PRODUCT_NAME = Mld;
-				PROVISIONING_PROFILE = "28b88740-64ce-475f-ab63-7e4ff56dfd51";
+				PROVISIONING_PROFILE = "2d413373-f853-4703-81e2-7ed8973b41be";
 				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1720,7 +1717,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mld/Mld.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GVCC7N2J83;
@@ -1764,8 +1762,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shumei.Demo;
 				PRODUCT_NAME = Mld;
-				PROVISIONING_PROFILE = "28b88740-64ce-475f-ab63-7e4ff56dfd51";
-				PROVISIONING_PROFILE_SPECIFIER = Develop;
+				PROVISIONING_PROFILE = "2d413373-f853-4703-81e2-7ed8973b41be";
+				PROVISIONING_PROFILE_SPECIFIER = Mid;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1930,7 +1928,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "iPhone Distribution: Xiaojiang Liu (GVCC7N2J83)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1947,9 +1945,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "iPhone Distribution: Xiaojiang Liu (GVCC7N2J83)";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1971,7 +1970,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Xiaojiang Liu (GVCC7N2J83)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1982,9 +1981,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "iPhone Distribution: Xiaojiang Liu (GVCC7N2J83)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

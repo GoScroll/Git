@@ -29,6 +29,9 @@ import MyWeChat from "./MyPageComponent/SectionComponent/MyWeChat";
 import LoginProve from "./MyPageComponent/LoginProve";
 import MyEarn from "./MyPageComponent/SectionComponent/MyEarn";
 import RewardRules from "./EarnPageComponent/RewardRules";
+import Release from "./MyPageComponent/SectionComponent/Release";
+import ReleaseList from './MyPageComponent/SectionComponent/ReleaseList';
+import LendRelease from './LendPageComponent/LendRelease';
 
 const Root = StackNavigator({
         Home: {
@@ -110,6 +113,24 @@ const Root = StackNavigator({
                 title: '输入邀请码'
             }
         },
+        ReleaseList: {
+            screen: ReleaseList,
+            navigationOptions: {
+                title:'',
+            }
+        },
+        Release: {
+            screen: Release,
+            navigationOptions: {
+                header:null,
+            }
+        },
+        LendRelease: {
+            screen: LendRelease,
+            navigationOptions: {
+                title:'',
+            }
+        },
         Prove: {
             screen: Prove,
             navigationOptions: {
@@ -122,7 +143,7 @@ const Root = StackNavigator({
         Change_Name: {
             screen: Change_Name,
             navigationOptions: {
-                title: '修改昵称'
+                header: null,
             }
         },
         MyEarn: {
