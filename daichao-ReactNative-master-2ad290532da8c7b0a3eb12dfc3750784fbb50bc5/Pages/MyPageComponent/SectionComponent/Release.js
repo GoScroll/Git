@@ -60,7 +60,7 @@ export default class Release extends Component {
         )
             .then(result => {
                 console.log(result);
-                if(result.code===0){
+                if(result.code===0 || result.code === 1){
                     Alert.alert(
                         '提示', //提示标题
                         "发布成功", //提示内容
