@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import NetUtils from '../../Common/NetUtils';
 import * as ScreenUtils from "../../Common/ScreenUtils";
+import LoveHeart from "../../Common/LoveHeart";
 let {width,height} = Dimensions.get('window');
 let url = "http://47.98.148.58/app/dcPublic/showPubNote.do";
 let isIphoneX = (Platform.OS === 'ios' && (Number(((height/width)+"").substr(0,4)) * 100) === 216);
@@ -34,6 +35,7 @@ export default class ReleaseList extends Component {
         this.utils = new NetUtils;
         this.state={
             data:'',
+            likeCount: 8,
         }
     }
 
@@ -59,8 +61,8 @@ export default class ReleaseList extends Component {
                 this.setState({
                     data:result.data,
                 });
-                console.log(result.data.note_imgs_url)
-                console.log(result.data.note_title)
+                console.log(result.data);
+                console.log(result.data)
             })
             .catch((error)=> {
                 console.log(error);
@@ -89,29 +91,67 @@ export default class ReleaseList extends Component {
 
     _renderItem= ({item}) => {
         return (
-            <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(5)}}>
-
-                <View style={styles.wrap}>
+            <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(10)}}>
+                {/*头像和名字*/}
+                {console.log(item)}
+                <View style={styles.wrap2}>
                     <View style={{flexDirection: 'row', padding: 5}}>
-                        <Image source={{uri: item.note_imgs_url}}
-                               style={styles.icon}
+                        <Image source={{uri: item.user_img}}
+                               style={styles.icon2}
                         />
-                        <View style={styles.two}>
+                        <View style={styles.two2}>
                             <Text style={{
                                 color: 'black',
-                                fontSize: ScreenUtils.setSpText(15.5),
-                                paddingBottom: 7
+                                fontSize: ScreenUtils.setSpText(17),
                             }}>{item.note_title}</Text>
-                            <Text
-                                ellipsizeMode='tail'
-                                style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
-                            >{item.note_content}</Text>
                         </View>
-
+                    </View>
+                </View>
+                {/*内容*/}
+                <View style={styles.content}>
+                    <Text
+                        ellipsizeMode='tail'
+                        style={{width: width, fontSize: ScreenUtils.setSpText(14.5)}}
+                    >{item.note_content}</Text>
+                </View>
+                {console.log(item)}
+                {console.log(item.user_img)}
+                <View style={styles.imgContent}>
+                    <Image
+                        style={styles.allImg}
+                        source={{uri: item.note_imgs_url}}/>
+                </View>
+                <View style={styles.countAndLike}>
+                    {/*浏览次数*/}
+                    <View style={styles.toolStyle}>
+                        <View style={{flexDirection:'row'}}>
+                            <Image
+                                style={{width: ScreenUtils.scaleSize(50), height: ScreenUtils.scaleSize(50)}}
+                                source={{uri: 'https://i.loli.net/2018/12/08/5c0b81605da63.png'}}/>
+                            <Text style={{fontSize: ScreenUtils.setSpText(15)}}>{item.skim_num}</Text>
+                        </View>
+                        <LoveHeart size={20} loveColor={'#EE2C2C'} disLoveColor={'gray'} data={item.note_id}/>
                     </View>
                 </View>
             </View>
         )
+    };
+
+    hasPicture = (has) => {
+        if (has) {
+            let hasPicture = true;
+            if (hasPicture) {
+                return (<View style={styles.imgContent}>
+                    <Image
+                        style={styles.allImg}
+                        source={{uri: 'https://i.loli.net/2018/12/08/5c0b8848934fe.jpg'}}/>
+                </View>)
+            } else {
+
+            }
+        } else {
+            return null;
+        }
     };
 
 
@@ -159,11 +199,11 @@ const styles = StyleSheet.create({
         marginLeft: ScreenUtils.scaleSize(10),
         marginRight: ScreenUtils.scaleSize(10),
     },
-    two: {
+    two2: {
         justifyContent: 'center',
-        paddingLeft: 5
+        paddingLeft: 5,
     },
-    wrap: {
+    wrap2: {
         width: width,
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -173,15 +213,47 @@ const styles = StyleSheet.create({
         paddingRight: 5,
 
     },
-    icon: {
+    icon2: {
         borderRadius: 8,
-        height: ScreenUtils.scaleSize(90),
-        width: ScreenUtils.scaleSize(90),
+        height: ScreenUtils.scaleSize(40),
+        width: ScreenUtils.scaleSize(40),
         paddingLeft: 5,
         paddingRight: 10,
     },
-    ahead: {
-        height: ScreenUtils.scaleSize(45),
-        width: ScreenUtils.scaleSize(45),
+    content: {
+        width: width,
+        backgroundColor: '#ffffff',
+        padding:ScreenUtils.scaleSize(10)
     },
+    imgContent: {
+        width: width,
+        height: ScreenUtils.scaleSize(200),
+        flexDirection: "row",
+        backgroundColor: '#ffffff',
+        paddingBottom: ScreenUtils.scaleSize(5)
+    },
+    allImg: {
+        width: ScreenUtils.scaleSize(200),
+        height: ScreenUtils.scaleSize(200),
+        marginLeft: ScreenUtils.scaleSize(30)
+    },
+    countAndLike: {
+        width:width,
+        height:ScreenUtils.scaleSize(68),
+        paddingTop:ScreenUtils.scaleSize(10),
+        justifyContent:'center',
+        backgroundColor: "#ffffff",
+    },
+    myIcon: {
+        width: ScreenUtils.scaleSize(40),
+        height: ScreenUtils.scaleSize(40),
+        marginLeft: ScreenUtils.scaleSize(10)
+    },
+    toolStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width:width*0.6,
+        marginHorizontal: 20,
+        marginBottom: 5,
+    }
 });

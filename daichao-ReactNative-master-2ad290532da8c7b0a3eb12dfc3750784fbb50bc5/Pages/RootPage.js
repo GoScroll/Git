@@ -150,8 +150,10 @@ const Root = StackNavigator({
         Release: {
             screen: Release,
             navigationOptions: {
-               header:null,
-            }
+                title:'我要发布',
+
+            },
+
         },
         Change_Name: {
             screen: Change_Name,

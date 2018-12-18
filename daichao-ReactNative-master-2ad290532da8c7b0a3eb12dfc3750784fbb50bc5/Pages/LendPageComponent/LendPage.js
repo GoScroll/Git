@@ -21,10 +21,12 @@ import TextInputPart from './TextInputPart';
 import Swiper from 'react-native-swiper';
 import * as ScreenUtils from "../Common/ScreenUtils";
 import NetUtils from "../Common/NetUtils";
+import {scaleSize} from "../Common/ScreenUtils";
+import LoveHeart from '../Common/LoveHeart';
 
 let Dimensions = require('Dimensions');
 let {width, height} = Dimensions.get('window');
-let isIphoneX = (Platform.OS === 'ios' && (Number(((height/width)+"").substr(0,4)) * 100) === 216);
+let isIphoneX = (Platform.OS === 'ios' && (Number(((height / width) + "").substr(0, 4)) * 100) === 216);
 let url = 'http://47.98.148.58/app/goods/homePage.do';
 let Url = 'http://47.98.148.58/app/goods/clickCount.do';
 let URL = 'http://47.98.148.58/app/user/checkUserStatusByTkid.do';
@@ -69,6 +71,11 @@ export default class LendPage extends Component {
             tab4Id: '',
             tab5Id: '',
             isChange: 0,
+            isRelease: false,
+            // 是否点赞
+            isLike: false,
+            // 点赞数
+            likeCount: 6
         }
     }
 
@@ -92,7 +99,10 @@ export default class LendPage extends Component {
                 />
                 {
                     Platform.OS === 'ios' ?
-                        <View style={{height: Platform.OS === 'ios' ? (isIphoneX ? 40 : 20) : 0, backgroundColor: '#FFE059'}}>
+                        <View style={{
+                            height: Platform.OS === 'ios' ? (isIphoneX ? 40 : 20) : 0,
+                            backgroundColor: '#FFE059'
+                        }}>
                         </View> : null
                 }
                 <TextInputPart {...this.props}/>
@@ -197,26 +207,31 @@ export default class LendPage extends Component {
                         <Text style={styles.tab5}>{this.state.tab5Title}</Text>
                     </TouchableOpacity>
                 </View>
-                <Modal
-                    visible={this.state.visible}
-                    animationType='slide'
-                    transparent={true}
-                    onRequestClose={() => this.setModalVisible(false)}>
-                    <View style={styles.modalStyle}>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('WebPage', {url: this.state.FdataUrl, ...this.props})}
-                        >
-                            <Image
-                                source={{uri: this.state.FdataPic}}
-                                style={{height: ScreenUtils.scaleSize(500), width: ScreenUtils.scaleSize(500)}}
-                            />
-                        </TouchableOpacity>
-                        <Text>|</Text>
-                        <TouchableOpacity onPress={() => this._onClose()}>
-                            <Icon name="close-o" size={40} color={'#FFE059'}/>
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
+                 {/*todo*/}
+                {this.state.isChange
+                        ?
+                        <Modal
+                        visible={this.state.visible}
+                        animationType='slide'
+                        transparent={true}
+                        onRequestClose={() => this.setModalVisible(false)}>
+                        <View style={styles.modalStyle}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('WebPage', {url: this.state.FdataUrl, ...this.props})}
+                            >
+                                <Image
+                                    source={{uri: this.state.FdataPic}}
+                                    style={{height: ScreenUtils.scaleSize(500), width: ScreenUtils.scaleSize(500)}}
+                                />
+                            </TouchableOpacity>
+                            <Text>|</Text>
+                            <TouchableOpacity onPress={() => this._onClose()}>
+                                <Icon name="close-o" size={40} color={'#FFE059'}/>
+                            </TouchableOpacity>
+                        </View>
+                    </Modal>
+                        : null
+                }
                 <FlatList
                     ref={(flatList) => this._flatList = flatList}
                     renderItem={this.ViewList}
@@ -278,8 +293,9 @@ export default class LendPage extends Component {
         this.utils.fetchNetRepository(url,
             {"pageNo": Page})
             .then(result => {
+                console.log(result);
                 this.setState({
-                    isChange:result.data.isPub,
+                    isChange: result.data.isPub,
                 });
                 let data = result.data.commodityList;
                 let length = result.data.total;
@@ -397,8 +413,8 @@ export default class LendPage extends Component {
                         height: ScreenUtils.scaleSize(30)
                     }} source={require('../../res/Images/米米快报.png')}/>
                     <Text style={{
-                        paddingLeft:ScreenUtils.scaleSize(8),
-                        width:ScreenUtils.scaleSize(70),
+                        paddingLeft: ScreenUtils.scaleSize(8),
+                        width: ScreenUtils.scaleSize(70),
                         color: 'red',
                         marginTop: ScreenUtils.scaleSize(3),
                         fontSize: ScreenUtils.setSpText(14)
@@ -556,93 +572,105 @@ export default class LendPage extends Component {
         }
     };
 
-
     ViewList = ({item}) => {
-        if (this.state.isChange === 0) {
+        // 是否点赞
+        let isLike =  false;
+        // 点赞数
+        let likeCount = 6;
+        // 审核时期
+        if (this.state.isChange===0) {
             return (
-
-                <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.onPush(item.value.commodityId);
-                            this.props.navigation.navigate('WebPage', {url: item.value.commodityUrl, ...this.props})
-                        }}
-                    >
-                        <View style={styles.wrap}>
-                            <View style={{flexDirection: 'row'}}>
-                                <Image source={{uri: item.value.commodityInco}}
-                                       style={styles.icon}
-                                />
-                                <View style={styles.two}>
-                                    <View style={{flexDirection: 'row'}}>
-
-                                        <Text style={{
-                                            color: 'black',
-                                            fontSize: ScreenUtils.setSpText(15.5),
-                                            paddingBottom: 7
-                                        }}>{item.value.commodityName}</Text>
-
-                                        {this.CheckTab1({item})}
-                                        {this.CheckTab2({item})}
-                                        {this.Checkdk({item})}
-
-                                    </View>
-                                    <Text
-                                        numberOfLines={1}
-                                        ellipsizeMode='tail'
-                                        style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
-                                    >{item.value.commodityText}</Text>
-                                </View>
-
-                            </View>
-                            <Image
-                                style={styles.ahead}
-                                source={require('../../res/Images/ahead.png')}
+                <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(10)}}>
+                    {/*头像和名字*/}
+                    <View style={styles.wrap2}>
+                        <View style={{flexDirection: 'row', padding: 5}}>
+                            <Image source={{uri: item.value.user_img}}
+                                   style={styles.icon2}
                             />
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            )
-        } else {
-            return (
-                <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
-                    <TouchableOpacity
-                        onPress={() => {
-                            // this.onChangePush(item.value.commodityId);
-                            this.props.navigation.navigate('LendRelease', {title:'米米圈', id:item.value.commodityId})
-                        }}
-                    >
-                        <View style={styles.wrap}>
-                            <View style={{flexDirection: 'row'}}>
-                                <Image source={{uri: item.value.commodityInco}}
-                                       style={styles.icon}
-                                />
-                                <View style={styles.two}>
-                                    <View style={{flexDirection: 'row'}}>
-
-                                        <Text style={{
-                                            color: 'black',
-                                            fontSize: ScreenUtils.setSpText(15.5),
-                                            paddingBottom: 7
-                                        }}>{item.value.commodityName}</Text>
-                                    </View>
-                                    <Text
-                                        numberOfLines={1}
-                                        ellipsizeMode='tail'
-                                        style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
-                                    >{item.value.commodityText}</Text>
-                                </View>
-
+                            <View style={styles.two2}>
+                                <Text style={{
+                                    color: 'black',
+                                    fontSize: ScreenUtils.setSpText(17),
+                                }}>{item.value.note_title}</Text>
                             </View>
-                            <Image
-                                style={styles.ahead}
-                                source={require('../../res/Images/ahead.png')}
-                            />
                         </View>
-                    </TouchableOpacity>
+                    </View>
+                    {/*内容*/}
+                    <View style={styles.content}>
+                        <Text
+                            ellipsizeMode='tail'
+                            style={{width: width, fontSize: ScreenUtils.setSpText(14.5)}}
+                        >{item.value.note_content}</Text>
+                    </View>
+                    {console.log(item)}
+                    {console.log(item.value.user_img)}
+                    <View style={styles.imgContent}>
+                        <Image
+                            style={styles.allImg}
+                            source={{uri: item.value.note_imgs_url}}/>
+                    </View>
+                    <View style={styles.countAndLike}>
+                        {/*浏览次数*/}
+                        <View style={styles.toolStyle}>
+                            <View style={{flexDirection:'row'}}>
+                                <Image
+                                    style={{width: ScreenUtils.scaleSize(50), height: ScreenUtils.scaleSize(50)}}
+                                    source={{uri: 'https://i.loli.net/2018/12/08/5c0b81605da63.png'}}/>
+                                <Text style={{fontSize: ScreenUtils.setSpText(15)}}>{item.value.skim_num}</Text>
+                            </View>
+                            <LoveHeart size={20} loveColor={'#EE2C2C'} disLoveColor={'gray'} data={item.value.note_id}/>
+                        </View>
+                    </View>
                 </View>
             )
         }
+        // 发布之后
+        else {
+                return (
+                    <View
+                        style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
+                        <TouchableOpacity
+                            onPress={() => {
+                                this.onPush(item.value.commodityId);
+                                this.props.navigation.navigate('WebPage', {url: item.value.commodityUrl, ...this.props})
+                            }}
+                        >
+                            <View style={styles.wrap}>
+                                <View style={{flexDirection: 'row'}}>
+                                    <Image source={{uri: item.value.commodityInco}}
+                                           style={styles.icon}
+                                    />
+                                    <View style={styles.two}>
+                                        <View style={{flexDirection: 'row',height:36}}>
+
+                                            <Text style={{
+                                                color: 'black',
+                                                fontSize: ScreenUtils.setSpText(15.5),
+                                                paddingBottom: 7
+                                            }}>{item.value.commodityName}</Text>
+
+                                            {this.CheckTab1({item})}
+                                            {this.CheckTab2({item})}
+                                            {this.Checkdk({item})}
+
+                                        </View>
+                                        <Text
+                                            numberOfLines={1}
+                                            ellipsizeMode='tail'
+                                            style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
+                                        >{item.value.commodityText}</Text>
+                                    </View>
+
+                                </View>
+                                <Image
+                                    style={styles.ahead}
+                                    source={require('../../res/Images/ahead.png')}
+                                />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                );
+            }
     };
 
 }
@@ -685,7 +713,9 @@ const styles = StyleSheet.create({
     },
     two: {
         justifyContent: 'center',
-        paddingLeft: 5
+        paddingLeft: 5,
+        height:50,
+        // backgroundColor:'red',
     },
     wrap: {
         height: 80,
@@ -751,56 +781,56 @@ const styles = StyleSheet.create({
         color: '#444444',
         fontSize: ScreenUtils.scaleSize(25.8),
         marginTop: ScreenUtils.scaleSize(16.6),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     image1: {
         height: ScreenUtils.scaleSize(75),
         width: ScreenUtils.scaleSize(75),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     tab2: {
         color: '#444444',
         fontSize: ScreenUtils.scaleSize(25.8),
         marginTop: ScreenUtils.scaleSize(16.6),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     image2: {
         height: ScreenUtils.scaleSize(75),
         width: ScreenUtils.scaleSize(75),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     tab3: {
         color: '#444444',
         fontSize: ScreenUtils.scaleSize(25.8),
         marginTop: ScreenUtils.scaleSize(16.6),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     image3: {
         height: ScreenUtils.scaleSize(75),
         width: ScreenUtils.scaleSize(75),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     tab4: {
         color: '#444444',
         fontSize: ScreenUtils.scaleSize(25.8),
         marginTop: ScreenUtils.scaleSize(16.6),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     image4: {
         height: ScreenUtils.scaleSize(75),
         width: ScreenUtils.scaleSize(75),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     tab5: {
         color: '#444444',
         fontSize: ScreenUtils.scaleSize(25.8),
         marginTop: ScreenUtils.scaleSize(16.6),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     image5: {
         height: ScreenUtils.scaleSize(75),
         width: ScreenUtils.scaleSize(75),
-        alignSelf:"center"
+        alignSelf: "center"
     },
     reportText: {
         fontSize: ScreenUtils.setSpText(15),
@@ -851,4 +881,61 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
     },
+    two2: {
+        justifyContent: 'center',
+        paddingLeft: 5,
+    },
+    wrap2: {
+        width: width,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#FFFFFF',
+        flexDirection: 'row',
+        paddingLeft: 5,
+        paddingRight: 5,
+
+    },
+    icon2: {
+        borderRadius: 8,
+        height: ScreenUtils.scaleSize(40),
+        width: ScreenUtils.scaleSize(40),
+        paddingLeft: 5,
+        paddingRight: 10,
+    },
+    content: {
+        width: width,
+        backgroundColor: '#ffffff',
+        padding:ScreenUtils.scaleSize(10)
+    },
+    imgContent: {
+        width: width,
+        height: ScreenUtils.scaleSize(200),
+        flexDirection: "row",
+        backgroundColor: '#ffffff',
+        paddingBottom: ScreenUtils.scaleSize(5)
+    },
+    allImg: {
+        width: ScreenUtils.scaleSize(200),
+        height: ScreenUtils.scaleSize(200),
+        marginLeft: ScreenUtils.scaleSize(30)
+    },
+    countAndLike: {
+        width:width,
+        height:ScreenUtils.scaleSize(68),
+        paddingTop:ScreenUtils.scaleSize(10),
+        justifyContent:'center',
+        backgroundColor: "#ffffff",
+    },
+    myIcon: {
+        width: ScreenUtils.scaleSize(40),
+        height: ScreenUtils.scaleSize(40),
+        marginLeft: ScreenUtils.scaleSize(10)
+    },
+    toolStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width:width*0.6,
+        marginHorizontal: 20,
+        marginBottom: 5,
+    }
 });
