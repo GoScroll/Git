@@ -207,10 +207,10 @@ export default class LendPage extends Component {
                         <Text style={styles.tab5}>{this.state.tab5Title}</Text>
                     </TouchableOpacity>
                 </View>
-                 {/*todo*/}
+                {/*todo*/}
                 {this.state.isChange
-                        ?
-                        <Modal
+                    ?
+                    <Modal
                         visible={this.state.visible}
                         animationType='slide'
                         transparent={true}
@@ -230,7 +230,7 @@ export default class LendPage extends Component {
                             </TouchableOpacity>
                         </View>
                     </Modal>
-                        : null
+                    : null
                 }
                 <FlatList
                     ref={(flatList) => this._flatList = flatList}
@@ -578,7 +578,7 @@ export default class LendPage extends Component {
         // 点赞数
         let likeCount = 6;
         // 审核时期
-        if (this.state.isChange===0) {
+        if (this.state.isChange==='1') {
             return (
                 <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(10)}}>
                     {/*头像和名字*/}
@@ -626,51 +626,51 @@ export default class LendPage extends Component {
         }
         // 发布之后
         else {
-                return (
-                    <View
-                        style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
-                        <TouchableOpacity
-                            onPress={() => {
-                                this.onPush(item.value.commodityId);
-                                this.props.navigation.navigate('WebPage', {url: item.value.commodityUrl, ...this.props})
-                            }}
-                        >
-                            <View style={styles.wrap}>
-                                <View style={{flexDirection: 'row'}}>
-                                    <Image source={{uri: item.value.commodityInco}}
-                                           style={styles.icon}
-                                    />
-                                    <View style={styles.two}>
-                                        <View style={{flexDirection: 'row',height:36}}>
-
-                                            <Text style={{
-                                                color: 'black',
-                                                fontSize: ScreenUtils.setSpText(15.5),
-                                                paddingBottom: 7
-                                            }}>{item.value.commodityName}</Text>
-
-                                            {this.CheckTab1({item})}
-                                            {this.CheckTab2({item})}
-                                            {this.Checkdk({item})}
-
-                                        </View>
-                                        <Text
-                                            numberOfLines={1}
-                                            ellipsizeMode='tail'
-                                            style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
-                                        >{item.value.commodityText}</Text>
-                                    </View>
-
-                                </View>
-                                <Image
-                                    style={styles.ahead}
-                                    source={require('../../res/Images/ahead.png')}
+            return (
+                <View
+                    style={{alignItems: 'center', justifyContent: 'center', paddingTop: ScreenUtils.scaleSize(16)}}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.onPush(item.value.commodityId);
+                            this.props.navigation.navigate('WebPage', {url: item.value.commodityUrl, ...this.props})
+                        }}
+                    >
+                        <View style={styles.wrap}>
+                            <View style={{flexDirection: 'row'}}>
+                                <Image source={{uri: item.value.commodityInco}}
+                                       style={styles.icon}
                                 />
+                                <View style={styles.two}>
+                                    <View style={{flexDirection: 'row',height:36}}>
+
+                                        <Text style={{
+                                            color: 'black',
+                                            fontSize: ScreenUtils.setSpText(15.5),
+                                            paddingBottom: 7
+                                        }}>{item.value.commodityName}</Text>
+
+                                        {this.CheckTab1({item})}
+                                        {this.CheckTab2({item})}
+                                        {this.Checkdk({item})}
+
+                                    </View>
+                                    <Text
+                                        numberOfLines={1}
+                                        ellipsizeMode='tail'
+                                        style={{width: width * 0.75, fontSize: ScreenUtils.setSpText(14.5)}}
+                                    >{item.value.commodityText}</Text>
+                                </View>
+
                             </View>
-                        </TouchableOpacity>
-                    </View>
-                );
-            }
+                            <Image
+                                style={styles.ahead}
+                                source={require('../../res/Images/ahead.png')}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            );
+        }
     };
 
 }
