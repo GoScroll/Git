@@ -27,6 +27,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ImageView musicimg;
     private ImageView attentionimg;
     private ImageView mineimg;
+    private ImageView addimg;
     private TextView homeText;
     private TextView musicText;
     private TextView attentionText;
@@ -50,6 +51,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         musicimg = (ImageView) findViewById(R.id.music_img);
         attentionimg = (ImageView) findViewById(R.id.attention_img);
         mineimg = (ImageView) findViewById(R.id.mine_img);
+        addimg = (ImageView)findViewById(R.id.add_circle);
         homeText = (TextView) findViewById(R.id.home_text);
         musicText = (TextView) findViewById(R.id.music_text);
         attentionText = (TextView) findViewById(R.id.attention_text);
@@ -59,6 +61,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         musicimg.setColorFilter(Color.GRAY);
         attentionimg.setColorFilter(Color.GRAY);
         mineimg.setColorFilter(Color.GRAY);
+        addimg.setImageResource(R.drawable.add);
         homeText.setTextColor(Color.RED);
         musicText.setTextColor(Color.GRAY);
         attentionText.setTextColor(Color.GRAY);
@@ -116,6 +119,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 attentionText.setTextColor(Color.GRAY);
                 mineText.setTextColor(Color.RED);
                 setTabSelected(3);
+                break;
+            case  R.id.add_circle:
                 break;
             default:
                 break;

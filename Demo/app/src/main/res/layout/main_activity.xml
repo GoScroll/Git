@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <FrameLayout
@@ -74,13 +74,24 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             >
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/float_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/done"
-                android:layout_centerInParent="true"
-                android:scaleType="center"/>
+            <!--<android.support.design.widget.FloatingActionButton-->
+                <!--android:id="@+id/float_img"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:scaleType="center"-->
+                <!--app:borderWidth="0dp"-->
+                <!--android:foregroundGravity="center"-->
+                <!--android:src="@drawable/add"-->
+                <!--app:elevation="8dp" />-->
+           <ImageButton
+               android:id="@+id/add_circle"
+               android:layout_width="40dp"
+               android:layout_height="wrap_content"
+               android:background="@drawable/circle"
+               android:layout_centerInParent="true"
+               tools:ignore="ContentDescription" />
+
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/attention_tab"
