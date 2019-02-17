@@ -37,7 +37,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
         initView();
         setTabSelected(0);
     }

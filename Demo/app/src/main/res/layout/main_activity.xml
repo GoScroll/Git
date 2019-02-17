@@ -85,6 +85,7 @@
                 <!--android:src="@drawable/add"-->
                 <!--app:elevation="8dp" />-->
            <ImageButton
+               android:tint="#ffffff"
                android:id="@+id/add_circle"
                android:layout_width="40dp"
                android:layout_height="wrap_content"
