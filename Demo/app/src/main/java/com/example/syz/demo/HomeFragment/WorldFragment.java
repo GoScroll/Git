@@ -1,4 +1,4 @@
-package com.example.syz.demo;
+package com.example.syz.demo.HomeFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class fragmentPage1 extends Fragment {
+import com.example.syz.demo.R;
+
+public class WorldFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_page1, null);
+        View view = inflater.inflate(R.layout.world_fragment, null);
         return view;
     }
 }

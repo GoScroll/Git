@@ -1,4 +1,4 @@
-package com.example.syz.demo;
+package com.example.syz.demo.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

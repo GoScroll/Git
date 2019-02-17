@@ -1,4 +1,4 @@
-package com.example.syz.demo;
+package com.example.syz.demo.ScreenPage;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -14,10 +14,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.syz.demo.HomeFragment.WorldFragment;
+import com.example.syz.demo.HomeFragment.GifFragment;
+import com.example.syz.demo.HomeFragment.PicturnFragment;
+import com.example.syz.demo.HomeFragment.VideoFragment;
+import com.example.syz.demo.R;
+import com.example.syz.demo.Adapter.myFragmentAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Page1 extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class HomePage extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
     private ViewPager myViewPager;
     private TextView tab0, tab1, tab2, tab3;
@@ -38,7 +45,7 @@ public class Page1 extends Fragment implements View.OnClickListener, ViewPager.O
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.page1, container, false);
+        View view = inflater.inflate(R.layout.home_page, container, false);
 
         initView(view);
         initLineImage();
@@ -74,10 +81,10 @@ public class Page1 extends Fragment implements View.OnClickListener, ViewPager.O
     private void initView(View view) {
         myViewPager = (ViewPager) view.findViewById(R.id.myViewPage);
 
-        fragmentPage1 fragmentPage1 = new fragmentPage1();
-        fragmentPage2 fragmentPage2 = new fragmentPage2();
-        fragmentPage3 fragmentPage3 = new fragmentPage3();
-        fragmentPage4 fragmentPage4 = new fragmentPage4();
+        WorldFragment fragmentPage1 = new WorldFragment();
+        GifFragment fragmentPage2 = new GifFragment();
+        PicturnFragment fragmentPage3 = new PicturnFragment();
+        VideoFragment fragmentPage4 = new VideoFragment();
 
         List<Fragment> fragmentList = new ArrayList<Fragment>();
         fragmentList.add(fragmentPage1);

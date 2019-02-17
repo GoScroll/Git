@@ -1,16 +1,17 @@
-package com.example.syz.demo;
+package com.example.syz.demo.HomeFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class fragmentPage3 extends Fragment {
+import com.example.syz.demo.R;
+
+public class GifFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_page3, null);
+        View view = inflater.inflate(R.layout.gif_fragment, null);
         return view;
     }
 }
