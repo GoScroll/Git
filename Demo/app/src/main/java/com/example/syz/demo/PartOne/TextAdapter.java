@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
-import com.example.syz.demo.fragmentPage1;
+import com.example.syz.demo.HomeFragment.WorldFragment;
 
 import java.util.List;;import de.hdodenhof.circleimageview.CircleImageView;
 
