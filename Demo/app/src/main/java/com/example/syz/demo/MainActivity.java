@@ -2,21 +2,24 @@ package com.example.syz.demo;
 
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.syz.demo.ScreenPage.AttentionPage;
+import com.example.syz.demo.ScreenPage.CommunityPage;
+import com.example.syz.demo.ScreenPage.HomePage;
+import com.example.syz.demo.ScreenPage.MineScreen.MinePage;
+
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
-    private Page1 page1;
-    private Page2 page2;
-    private Page3 page3;
-    private Page4 page4;
+    private HomePage page1;
+    private CommunityPage page2;
+    private AttentionPage page3;
+    private MinePage page4;
 
     private View homeTab;
     private View musicTab;
@@ -132,7 +135,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         switch (index) {
             case 0:
                 if (page1 == null) {
-                    page1 = new Page1();
+                    page1 = new HomePage();
                     transaction.add(R.id.container, page1);
                 } else {
                     transaction.show(page1);
@@ -140,7 +143,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case 1:
                 if (page2 == null) {
-                    page2 = new Page2();
+                    page2 = new CommunityPage();
                     transaction.add(R.id.container, page2);
                 } else {
                     transaction.show(page2);
@@ -148,7 +151,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case 2:
                 if (page3 == null) {
-                    page3 = new Page3();
+                    page3 = new AttentionPage();
                     transaction.add(R.id.container, page3);
                 } else {
                     transaction.show(page3);
@@ -156,7 +159,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case 3:
                 if (page4 == null) {
-                    page4 = new Page4();
+                    page4 = new MinePage();
                     transaction.add(R.id.container, page4);
                 } else {
                     transaction.show(page4);

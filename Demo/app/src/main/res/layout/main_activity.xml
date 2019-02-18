@@ -57,14 +57,14 @@
                     android:layout_width="26dp"
                     android:layout_height="26dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/music"
+                    android:src="@drawable/community"
                     />
                 <TextView
                     android:id="@+id/music_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="音乐"
+                    android:text="社区"
                     android:textSize="10sp"/>
             </LinearLayout>
         </RelativeLayout>
