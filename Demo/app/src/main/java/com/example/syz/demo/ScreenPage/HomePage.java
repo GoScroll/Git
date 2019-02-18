@@ -1,4 +1,4 @@
-package com.example.syz.demo.ScreenPage;
+package com.example.syz.demo.screenPage;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.syz.demo.HomeFragment.WorldFragment;
-import com.example.syz.demo.HomeFragment.GifFragment;
-import com.example.syz.demo.HomeFragment.PicturnFragment;
-import com.example.syz.demo.HomeFragment.VideoFragment;
+import com.example.syz.demo.homeFragment.WorldFragment;
+import com.example.syz.demo.homeFragment.GifFragment;
+import com.example.syz.demo.homeFragment.PicturnFragment;
+import com.example.syz.demo.homeFragment.VideoFragment;
 import com.example.syz.demo.R;
-import com.example.syz.demo.Adapter.myFragmentAdapter;
+import com.example.syz.demo.adapter.myFragmentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

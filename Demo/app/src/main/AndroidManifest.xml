@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.syz.demo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".screenPage.MineScreen.SettingAvtivity"
+            android:label=""
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".screenPage.MineScreen.Loginactivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".screenPage.MineScreen.RegisterActivity"></activity>
     </application>
 
 </manifest>
