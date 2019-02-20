@@ -15,13 +15,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
-import com.example.syz.demo.HomeFragment.WorldFragment;
 
-import java.util.List;;import de.hdodenhof.circleimageview.CircleImageView;
+
+import java.util.List;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
     private List<Text> mTextList;
-    public Context mContext;
     static class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView headerImage;
         CircleImageView commentUserImage;
@@ -89,6 +89,7 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
                 holder.commentGoodNumber.setText(mDown+" ");
             }
         });
+
         return holder;
     }
 
