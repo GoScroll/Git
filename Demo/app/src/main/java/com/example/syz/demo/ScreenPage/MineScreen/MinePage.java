@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.mineScreen;
+package com.example.syz.demo.screenpage.minescreen;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

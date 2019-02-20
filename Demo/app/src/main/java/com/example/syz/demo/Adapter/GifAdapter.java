@@ -1,4 +1,4 @@
-package com.example.syz.demo.partOne;
+package com.example.syz.demo.adapter;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,7 +14,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
-import com.example.syz.demo.screenPage.partOnePage.GifShowActivity;
+import com.example.syz.demo.screenpage.minescreen.RegisterActivity;
+import com.example.syz.demo.util.Gif;
+import com.example.syz.demo.util.MyAppcation;
+import com.example.syz.demo.screenpage.GifShowActivity;
 
 
 import java.util.List;
@@ -97,6 +100,7 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> {
                 int position = holder.getAdapterPosition();
                 Gif gif = mGifList.get(position);
                 Intent intent = new Intent(view.getContext(),GifShowActivity.class);
+                Log.d("haha",gif.getGifImage());
                 intent.putExtra("imgUrl",gif.getGifImage());
                 view.getContext().startActivity(intent);
             }

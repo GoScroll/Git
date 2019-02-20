@@ -1,4 +1,4 @@
-package com.example.syz.demo.partOne;
+package com.example.syz.demo.util;
 
 public class Text {
     private String text;

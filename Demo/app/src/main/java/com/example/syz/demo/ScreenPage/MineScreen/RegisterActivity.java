@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.mineScreen;
+package com.example.syz.demo.screenpage.minescreen;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;

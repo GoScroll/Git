@@ -1,4 +1,4 @@
-package com.example.syz.demo.partOne;
+package com.example.syz.demo.util;
 
 import android.app.Application;
 import android.content.Context;

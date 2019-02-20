@@ -15,9 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.syz.demo.partOne.Gif;
-import com.example.syz.demo.partOne.GifAdapter;
-import com.example.syz.demo.partOne.HttpUtil;
+import com.example.syz.demo.util.Gif;
+import com.example.syz.demo.adapter.GifAdapter;
+import com.example.syz.demo.util.mHttpUtil;
 import com.example.syz.demo.R;
 
 import org.json.JSONArray;
@@ -184,7 +184,7 @@ public class GifFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtil.sendOKHttpRequest(url, new Callback() {
+                mHttpUtil.sendOKHttpRequest(url, new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();

@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.partOnePage;
+package com.example.syz.demo.screenpage;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.syz.demo.partOne.ImgDownloads;
-import com.example.syz.demo.partOne.MyAppcation;
+import com.example.syz.demo.util.ImgDownloads;
+import com.example.syz.demo.util.MyAppcation;
 import com.example.syz.demo.R;
 
 public class GifShowActivity extends AppCompatActivity {
@@ -26,7 +26,7 @@ public class GifShowActivity extends AppCompatActivity {
                 .asGif()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(gifImage);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         ImageView back = (ImageView)findViewById(R.id.gif_show_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,8 +39,8 @@ public class GifShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ImgDownloads.downloadImg(GifShowActivity.this,imgUrl);
-
             }
+
         });
     }
 

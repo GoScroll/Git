@@ -1,4 +1,4 @@
-package com.example.syz.demo.partOne;
+package com.example.syz.demo.adapter;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
+import com.example.syz.demo.util.MyAppcation;
+import com.example.syz.demo.util.Text;
 
 
 import java.util.List;

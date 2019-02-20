@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.syz.demo.screenPage.AttentionPage;
-import com.example.syz.demo.screenPage.CommunityPage;
-import com.example.syz.demo.screenPage.HomePage;
-import com.example.syz.demo.screenPage.mineScreen.MinePage;
+import com.example.syz.demo.screenpage.AttentionPage;
+import com.example.syz.demo.screenpage.CommunityPage;
+import com.example.syz.demo.screenpage.HomePage;
+import com.example.syz.demo.screenpage.minescreen.MinePage;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
@@ -49,7 +49,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                 || ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
         }else{
             initView();
             setTabSelected(0);
@@ -62,6 +62,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode){
             case 1:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    initView();
+                    setTabSelected(0);
+                }else{
+                    Toast.makeText(this,"You denied the permission",Toast.LENGTH_SHORT);
+                }
+                break;
+            case 2:
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     initView();
                     setTabSelected(0);

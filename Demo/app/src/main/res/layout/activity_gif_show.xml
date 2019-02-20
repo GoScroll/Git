@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screenPage.partOnePage.GifShowActivity"
+    tools:context=".screenpage.GifShowActivity"
     android:background="#000000"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
@@ -28,6 +28,7 @@
             android:tint="#ffffff"
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="start"
             />
@@ -40,6 +41,7 @@
             android:layout_height="30dp"
             android:layout_gravity="end"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             />
 </RelativeLayout>
