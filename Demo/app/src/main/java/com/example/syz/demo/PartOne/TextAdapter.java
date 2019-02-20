@@ -1,9 +1,7 @@
-package com.example.syz.demo.PartOne;
+package com.example.syz.demo.partOne;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;

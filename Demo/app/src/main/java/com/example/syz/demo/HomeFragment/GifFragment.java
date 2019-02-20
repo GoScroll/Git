@@ -1,16 +1,12 @@
-package com.example.syz.demo.HomeFragment;
+package com.example.syz.demo.homeFragment;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,17 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.syz.demo.MainActivity;
-import com.example.syz.demo.PartOne.Gif;
-import com.example.syz.demo.PartOne.GifAdapter;
-import com.example.syz.demo.PartOne.HttpUtil;
-import com.example.syz.demo.PartOne.MyAppcation;
-import com.example.syz.demo.PartOne.Text;
-import com.example.syz.demo.PartOne.TextAdapter;
+import com.example.syz.demo.partOne.Gif;
+import com.example.syz.demo.partOne.GifAdapter;
+import com.example.syz.demo.partOne.HttpUtil;
 import com.example.syz.demo.R;
 
 import org.json.JSONArray;

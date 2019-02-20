@@ -1,4 +1,4 @@
-package com.example.syz.demo.HomeFragment;
+package com.example.syz.demo.homeFragment;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,13 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.syz.demo.PartOne.HttpUtil;
-import com.example.syz.demo.PartOne.Text;
-import com.example.syz.demo.PartOne.TextAdapter;
+import com.example.syz.demo.partOne.HttpUtil;
+import com.example.syz.demo.partOne.Text;
+import com.example.syz.demo.partOne.TextAdapter;
 import com.example.syz.demo.R;
 
 
@@ -28,7 +25,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

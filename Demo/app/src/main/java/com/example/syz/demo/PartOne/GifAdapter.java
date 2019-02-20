@@ -1,10 +1,8 @@
-package com.example.syz.demo.PartOne;
+package com.example.syz.demo.partOne;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,10 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.syz.demo.MainActivity;
 import com.example.syz.demo.R;
-import com.example.syz.demo.ScreenPage.PartOnePage.GifShowActivity;
+import com.example.syz.demo.screenPage.partOnePage.GifShowActivity;
 
 
 import java.util.List;

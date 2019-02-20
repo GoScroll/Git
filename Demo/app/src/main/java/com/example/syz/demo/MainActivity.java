@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.syz.demo.ScreenPage.AttentionPage;
-import com.example.syz.demo.ScreenPage.CommunityPage;
-import com.example.syz.demo.ScreenPage.HomePage;
-import com.example.syz.demo.ScreenPage.MineScreen.MinePage;
+import com.example.syz.demo.screenPage.AttentionPage;
+import com.example.syz.demo.screenPage.CommunityPage;
+import com.example.syz.demo.screenPage.HomePage;
+import com.example.syz.demo.screenPage.mineScreen.MinePage;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {

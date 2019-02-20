@@ -1,4 +1,4 @@
-package com.example.syz.demo.HomeFragment;
+package com.example.syz.demo.homeFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

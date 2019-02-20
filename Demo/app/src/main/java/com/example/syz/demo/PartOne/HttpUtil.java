@@ -1,4 +1,4 @@
-package com.example.syz.demo.PartOne;
+package com.example.syz.demo.partOne;
 
 import java.util.concurrent.TimeUnit;
 
