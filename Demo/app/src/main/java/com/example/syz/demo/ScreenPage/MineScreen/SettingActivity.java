@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.MineScreen;
+package com.example.syz.demo.screenPage.mineScreen;
 
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
@@ -12,14 +12,12 @@ import android.view.ViewStub;
 import android.widget.ActionMenuView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.syz.demo.PartOne.Text;
 import com.example.syz.demo.R;
 
-public class SettingAvtivity extends AppCompatActivity implements View.OnClickListener {
+public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar setting_toolbar;
-    private ActionMenuView actionMenuView;
+//    private ActionMenuView actionMenuView;
     private TextView quitAcount;
     private ViewStub viewStub;
     private LocalBroadcastManager localBroadcastManager;

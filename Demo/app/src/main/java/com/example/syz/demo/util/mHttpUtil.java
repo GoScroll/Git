@@ -1,4 +1,4 @@
-package com.example.syz.demo.PartOne;
+package com.example.syz.demo.util;
 
 import java.util.concurrent.TimeUnit;
 
@@ -6,10 +6,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class HttpUtil {
+public class mHttpUtil {
     public static void sendOKHttpRequest(String address,okhttp3.Callback callback){
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(10,TimeUnit.SECONDS)
+                .connectTimeout(20,TimeUnit.SECONDS)
                 .readTimeout(30,TimeUnit.SECONDS)
                 .writeTimeout(30,TimeUnit.SECONDS)
                 .build();

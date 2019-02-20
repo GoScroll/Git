@@ -1,6 +1,6 @@
-package com.example.syz.demo.PartOne;
+package com.example.syz.demo.util;
 
-public class Text {
+public class Gif {
     private String text;
     private String type;
     private String username;
@@ -12,6 +12,8 @@ public class Text {
     private int up;
     private int down;
     private int forward;
+    private String gifImage;
+    private String thumbnail;
 
     public String getText() {
         return text;
@@ -55,6 +57,22 @@ public class Text {
 
     public int getForward() {
         return forward;
+    }
+
+    public String getGifImage() {
+        return gifImage;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setGifImage(String gifImage) {
+        this.gifImage = gifImage;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public void setForward(int forward) {

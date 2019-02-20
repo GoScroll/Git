@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.MineScreen;
+package com.example.syz.demo.screenPage.mineScreen;
 
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.syz.demo.MainActivity;
 import com.example.syz.demo.R;
+import com.example.syz.demo.screenPage.mineScreen.RegisterActivity;
 import com.example.syz.demo.util.HttpUtil;
 
 import org.json.JSONObject;

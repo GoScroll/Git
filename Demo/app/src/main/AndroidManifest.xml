@@ -9,8 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 
+
     <application
-        android:name=".PartOne.MyAppcation"
+        android:name=".util.MyAppcation"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,17 +28,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".screenPage.GifShowActivity">
+
+        </activity>
         <activity
-            android:name=".screenPage.MineScreen.SettingAvtivity"
+            android:name=".screenPage.mineScreen.SettingActivity"
             android:label=""
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".screenPage.MineScreen.Loginactivity"
+            android:name=".screenPage.mineScreen.Loginactivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme" />
-        <activity android:name=".screenPage.MineScreen.RegisterActivity" />
+        <activity android:name=".screenPage.mineScreen.RegisterActivity" />
         <activity
-            android:name=".screenPage.MineScreen.PersonInfoActivity"
+            android:name=".screenPage.mineScreen.PersonInfoActivity"
             android:label="">
         </activity>
 

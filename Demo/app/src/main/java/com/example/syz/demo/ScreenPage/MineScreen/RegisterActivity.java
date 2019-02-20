@@ -1,11 +1,9 @@
-package com.example.syz.demo.screenPage.MineScreen;
 
+package com.example.syz.demo.screenPage.mineScreen;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,17 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.syz.demo.R;
-import com.example.syz.demo.util.HttpUtil;
-
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 

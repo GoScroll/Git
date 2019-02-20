@@ -1,11 +1,10 @@
-package com.example.syz.demo.screenPage.MineScreen;
+package com.example.syz.demo.screenPage.mineScreen;
 
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentUris;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -24,7 +23,6 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,9 +33,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.syz.demo.MainActivity;
-import com.example.syz.demo.PartOne.HttpUtil;
-import com.example.syz.demo.PartOne.Text;
+import com.example.syz.demo.util.HttpUtil;
+import com.example.syz.demo.util.Text;
 import com.example.syz.demo.R;
 
 import org.json.JSONObject;
@@ -46,10 +43,8 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Calendar;
 
 import okhttp3.Call;

@@ -1,10 +1,9 @@
-package com.example.syz.demo.screenPage.MineScreen;
+package com.example.syz.demo.screenPage.mineScreen;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -22,15 +21,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.syz.demo.R;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-
-import static android.app.Activity.RESULT_OK;
 
 public class MinePage extends Fragment implements View.OnClickListener {
 
@@ -79,7 +75,7 @@ public class MinePage extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.setting_button:
-                Intent settingIntent = new Intent(getActivity(), SettingAvtivity.class);
+                Intent settingIntent = new Intent(getActivity(), SettingActivity.class);
                 settingIntent.putExtra("login", isLogin);
                 startActivity(settingIntent);
                 break;
