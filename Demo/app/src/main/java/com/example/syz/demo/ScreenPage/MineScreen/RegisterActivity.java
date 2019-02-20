@@ -1,5 +1,7 @@
 package com.example.syz.demo.screenPage.MineScreen;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,38 +66,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.register_button:
-                RequestBody requestBody = new FormBody.Builder()
-                        .add("phone", register_phone.getText().toString())
-                        .add("passwd", register_password.getText().toString())
-                        .build();
-                HttpUtil.postOkHttpRequest(register_uri, requestBody, new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                       Log.e(TAG,Log.getStackTraceString(e));
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String responseData = response.body().string();
-                        try{
-                            JSONObject jsonObject = new JSONObject(responseData);
-                            backMsg = jsonObject.getString("msg");
-                        } catch ( Exception e) {
-                            Log.e(TAG,Log.getStackTraceString(e));
-                        }
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (backMsg.equals("成功!")) {
-                                    finish();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), backMsg, Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }
-                });
+                if (register_phone.getText().length() > 0 && register_password.getText().length() > 0) {
+                    actionStart(this, register_phone.getText().toString(), register_password.getText().toString());
+                } else {
+                    Toast.makeText(this, "请填写账号密码", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.check_text:
                 Toast.makeText(this, "验证码功能暂未实现可以随便输入6为数字", Toast.LENGTH_SHORT).show();
@@ -109,5 +84,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             default:
                 break;
         }
+    }
+
+    public static void actionStart(Context context, String data1, String data2) {
+        Intent intent = new Intent(context, PersonInfoActivity.class);
+        intent.putExtra("phone", data1);
+        intent.putExtra("password", data2);
+        context.startActivity(intent);
     }
 }

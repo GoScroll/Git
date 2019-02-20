@@ -36,12 +36,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private TextView attentionText;
     private TextView mineText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         initView();
-        setTabSelected(0);
+        int id = getIntent().getIntExtra("id", 0);
+        if (id == 3) {
+            setTabSelected(3);
+        } else {
+            setTabSelected(0);
+        }
     }
 
     private void initView() {
