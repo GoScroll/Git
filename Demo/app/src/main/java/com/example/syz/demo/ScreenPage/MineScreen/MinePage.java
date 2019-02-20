@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.syz.demo.R;
+import com.example.syz.demo.homeFragment.gif.GifShowActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,7 +82,9 @@ public class MinePage extends Fragment implements View.OnClickListener {
                 break;
             case R.id.photo_img:
                 if (isLogin) {
-                    //展示一张图片
+                    Intent pictureIntent = new Intent(getActivity(), GifShowActivity.class);
+                    pictureIntent.putExtra("imgUrl",img);
+                    startActivity(pictureIntent);
                 } else {
                     Intent LoginIntent = new Intent(v.getContext(), Loginactivity.class);
                     startActivityForResult(LoginIntent, 3);

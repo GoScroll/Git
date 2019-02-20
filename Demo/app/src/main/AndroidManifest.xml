@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".screenPage.GifShowActivity">
+        <activity android:name=".homeFragment.gif.GifShowActivity">
 
         </activity>
         <activity
