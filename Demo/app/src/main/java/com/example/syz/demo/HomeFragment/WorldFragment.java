@@ -2,23 +2,22 @@ package com.example.syz.demo.homeFragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.syz.demo.PartOne.HttpUtil;
-import com.example.syz.demo.PartOne.Text;
-import com.example.syz.demo.PartOne.TextAdapter;
+import com.example.syz.demo.util.mHttpUtil;
+import com.example.syz.demo.util.Text;
+import com.example.syz.demo.adapter.TextAdapter;
 import com.example.syz.demo.R;
 
 
@@ -26,9 +25,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,6 +39,9 @@ public class WorldFragment extends Fragment {
     private static final int RE_UPDATE = 2;
     private List<Text> mText = new ArrayList<>();
     private RecyclerView textRecyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    TextAdapter textAdapter;
+    private StringBuilder stringBuilder;
     private String[] text;
     private String[] type;
     private String[] username;
@@ -55,14 +57,50 @@ public class WorldFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.world_fragment, container, false);
-        sendRequestWithOKHttp();
+        stringBuilder = new StringBuilder("https://www.apiopen.top/satinGodApi?type=2&page=");
+        sendRequestWithOKHttp(stringBuilder.append("1").toString());
         textRecyclerView = (RecyclerView) view.findViewById(R.id.text_recycler);
+        swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.text_swipe_refresh);
         return view;
+    }
+    public void refresh(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Thread.sleep(1000);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                Handler mainHandler = new Handler(Looper.getMainLooper());
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Random random = new Random();
+                        int raNum = random.nextInt(5)+1;
+                        sendRequestWithOKHttp(stringBuilder.append(String.valueOf(raNum)).toString());
+                        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+                        textAdapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+
+            }
+
+        }).start();
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
     }
 
     private Handler handler = new Handler() {
@@ -71,7 +109,7 @@ public class WorldFragment extends Fragment {
                     case UPDATE:
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                         textRecyclerView.setLayoutManager(layoutManager);
-                        TextAdapter textAdapter = new TextAdapter(mText);
+                        textAdapter = new TextAdapter(mText);
                         textRecyclerView.setAdapter(textAdapter);
                         break;
                     default:
@@ -81,6 +119,7 @@ public class WorldFragment extends Fragment {
         };
 
         private void parseJson (String jsonData){
+            mText.clear();
             try {
                 text = new String[20];
                 type = new String[20];
@@ -95,7 +134,6 @@ public class WorldFragment extends Fragment {
                 forward = new int[20];
                 JSONObject jsonObject = new JSONObject(jsonData);
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
-                Log.d("haha", "haa:" + jsonArray.length());
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject json = jsonArray.getJSONObject(i);
                     text[i] = json.getString("text");
@@ -123,7 +161,6 @@ public class WorldFragment extends Fragment {
                     textC.setForward(forward[i]);
                     mText.add(textC);
                 }
-                Log.d("haha", mText.get(1).getType());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -138,11 +175,11 @@ public class WorldFragment extends Fragment {
             }
 
         }
-        private void sendRequestWithOKHttp () {
+        private void sendRequestWithOKHttp (final String url) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    HttpUtil.sendOKHttpRequest("https://www.apiopen.top/satinGodApi?type=2&page=1", new Callback() {
+                    mHttpUtil.sendOKHttpRequest(url, new Callback() {
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                             String responseData = response.body().string();

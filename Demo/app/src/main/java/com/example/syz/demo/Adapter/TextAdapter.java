@@ -1,9 +1,7 @@
-package com.example.syz.demo.PartOne;
+package com.example.syz.demo.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,13 +13,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
-import com.example.syz.demo.HomeFragment.WorldFragment;
+import com.example.syz.demo.util.MyAppcation;
+import com.example.syz.demo.util.Text;
 
-import java.util.List;;import de.hdodenhof.circleimageview.CircleImageView;
+
+import java.util.List;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
     private List<Text> mTextList;
-    public Context mContext;
     static class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView headerImage;
         CircleImageView commentUserImage;
@@ -89,6 +89,7 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
                 holder.commentGoodNumber.setText(mDown+" ");
             }
         });
+
         return holder;
     }
 

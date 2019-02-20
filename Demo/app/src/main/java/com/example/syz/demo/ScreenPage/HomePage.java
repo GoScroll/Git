@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage;
+package com.example.syz.demo.screenpage;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
