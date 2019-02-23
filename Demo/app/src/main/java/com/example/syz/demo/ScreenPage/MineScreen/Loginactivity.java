@@ -107,7 +107,7 @@ public class Loginactivity extends AppCompatActivity implements View.OnClickList
                     nickname = jsonObject1.getString("name");
                     motto = jsonObject1.getString("text");
                     Sex = jsonObject1.getString("other");
-                    headPhoto = jsonObject1.getString("img");
+                    headPhoto = jsonObject1.getString("img").substring(24);
                 } catch ( Exception e) {
                     Log.e(TAG,Log.getStackTraceString(e));
                 }
