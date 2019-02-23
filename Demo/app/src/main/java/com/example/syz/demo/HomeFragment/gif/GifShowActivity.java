@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenpage;
+package com.example.syz.demo.homeFragment.gif;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

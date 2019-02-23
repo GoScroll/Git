@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenpage.minescreen;
+package com.example.syz.demo.screenPage.mineScreen;
 
 public class RegisterJson {
 

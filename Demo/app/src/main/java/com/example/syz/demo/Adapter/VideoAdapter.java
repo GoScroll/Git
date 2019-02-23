@@ -28,10 +28,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
-import com.example.syz.demo.screenpage.minescreen.RegisterActivity;
 import com.example.syz.demo.util.Gif;
 import com.example.syz.demo.util.MyAppcation;
-import com.example.syz.demo.screenpage.GifShowActivity;
 import com.example.syz.demo.util.VideoData;
 import com.example.syz.demo.util.VideoSurfaceView;
 

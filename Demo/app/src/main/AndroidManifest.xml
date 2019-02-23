@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.syz.demo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
 
     <application
@@ -17,7 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,17 +29,32 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".screenpage.GifShowActivity">
+        <activity android:name=".homeFragment.gif.GifShowActivity">
 
         </activity>
         <activity
-            android:name=".screenpage.minescreen.SettingAvtivity"
+            android:name=".screenPage.mineScreen.SettingActivity"
             android:label=""
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
-            android:name=".screenpage.minescreen.Loginactivity"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".screenpage.minescreen.RegisterActivity"></activity>
+            android:name=".screenPage.mineScreen.Loginactivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".screenPage.mineScreen.RegisterActivity" />
+        <activity
+            android:name=".screenPage.mineScreen.PersonInfoActivity"
+            android:label="">
+        </activity>
+
+        <provider
+            android:authorities="com.example.cameraalbumtest.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
     </application>
 
 </manifest>

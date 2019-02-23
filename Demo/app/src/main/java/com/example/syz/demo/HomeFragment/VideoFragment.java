@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.syz.demo.R;
-import com.example.syz.demo.adapter.TextAdapter;
 import com.example.syz.demo.adapter.VideoAdapter;
 import com.example.syz.demo.util.VideoData;
 import com.example.syz.demo.util.mHttpUtil;

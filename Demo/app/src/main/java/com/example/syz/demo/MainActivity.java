@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.syz.demo.screenpage.AttentionPage;
-import com.example.syz.demo.screenpage.CommunityPage;
-import com.example.syz.demo.screenpage.HomePage;
-import com.example.syz.demo.screenpage.minescreen.MinePage;
+import com.example.syz.demo.screenPage.AttentionPage;
+import com.example.syz.demo.screenPage.CommunityPage;
+import com.example.syz.demo.screenPage.HomePage;
+import com.example.syz.demo.screenPage.mineScreen.MinePage;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
@@ -43,16 +43,30 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private TextView attentionText;
     private TextView mineText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+//        initView();
+//        int id = getIntent().getIntExtra("id", 0);
+//        if (id == 3) {
+//            setTabSelected(3);
+//        } else {
+//            setTabSelected(0);
+//        }
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                 || ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
         }else{
             initView();
+        }
+        int id = getIntent().getIntExtra("id", 0);
+        if (id == 3) {
+            setTabSelected(3);
+        } else {
             setTabSelected(0);
         }
 

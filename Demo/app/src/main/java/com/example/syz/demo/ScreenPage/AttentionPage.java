@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenpage;
+package com.example.syz.demo.screenPage;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

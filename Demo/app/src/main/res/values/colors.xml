@@ -8,4 +8,5 @@
     <color name="black">#000000</color>
     <color name="login_color">#EEB4B4</color>
     <color name="pink">	#EE6363</color>
+    <color name="red">#FF0000</color>
 </resources>

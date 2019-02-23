@@ -1,4 +1,4 @@
-package com.example.syz.demo.homeFragment;
+package com.example.syz.demo.homeFragment.gif;
 
 import android.os.Bundle;
 import android.os.Handler;
