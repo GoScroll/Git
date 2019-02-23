@@ -75,7 +75,7 @@ public class GifFragment extends Fragment {
                     @Override
                     public void run() {
                         Random random = new Random();
-                        int raNum = random.nextInt(5)+1;
+                        int raNum = random.nextInt(9)+1;
                         sendRequestWithOKHttp(stringBuilder.append(String.valueOf(raNum)).toString());
                         stringBuilder.deleteCharAt(stringBuilder.length()-1);
                         gifAdapter.notifyDataSetChanged();
