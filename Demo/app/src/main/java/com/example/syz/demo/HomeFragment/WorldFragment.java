@@ -77,7 +77,7 @@ public class WorldFragment extends Fragment {
                     @Override
                     public void run() {
                         Random random = new Random();
-                        int raNum = random.nextInt(5)+1;
+                        int raNum = random.nextInt(9)+1;
                         sendRequestWithOKHttp(stringBuilder.append(String.valueOf(raNum)).toString());
                         stringBuilder.deleteCharAt(stringBuilder.length()-1);
                         textAdapter.notifyDataSetChanged();
@@ -161,14 +161,9 @@ public class WorldFragment extends Fragment {
                     textC.setForward(forward[i]);
                     mText.add(textC);
                 }
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Message message = new Message();
-                        message.what = UPDATE;
-                        handler.sendMessage(message);
-                    }
-                }).start();
+                Message message = new Message();
+                message.what = UPDATE;
+                handler.sendMessage(message);
 
             } catch (Exception e) {
                 e.printStackTrace();
