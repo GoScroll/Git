@@ -1,22 +1,34 @@
 package com.example.syz.demo;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.syz.demo.screenPage.AttentionPage;
+import com.example.syz.demo.screenPage.FloatActivity;
+import com.example.syz.demo.screenPage.communityScreen.CommunityPage;
+import com.example.syz.demo.screenPage.HomePage;
+import com.example.syz.demo.screenPage.mineScreen.MinePage;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
-    private Page1 page1;
-    private Page2 page2;
-    private Page3 page3;
-    private Page4 page4;
+    private HomePage page1;
+    private CommunityPage page2;
+    private AttentionPage page3;
+    private MinePage page4;
 
     private View homeTab;
     private View musicTab;
@@ -33,13 +45,58 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private TextView attentionText;
     private TextView mineText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        initView();
-        setTabSelected(0);
+//        initView();
+//        int id = getIntent().getIntExtra("id", 0);
+//        if (id == 3) {
+//            setTabSelected(3);
+//        } else {
+//            setTabSelected(0);
+//        }
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
+        }else{
+            initView();
+        }
+        int id = getIntent().getIntExtra("id", 0);
+        if (id == 3) {
+            setTabSelected(3);
+        } else {
+            setTabSelected(0);
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case 1:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    initView();
+                    setTabSelected(0);
+                }else{
+                    Toast.makeText(this,"You denied the permission",Toast.LENGTH_SHORT);
+                }
+                break;
+            case 2:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    initView();
+                    setTabSelected(0);
+                }else{
+                    Toast.makeText(this,"You denied the permission",Toast.LENGTH_SHORT);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     private void initView() {
@@ -61,7 +118,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         musicimg.setColorFilter(Color.GRAY);
         attentionimg.setColorFilter(Color.GRAY);
         mineimg.setColorFilter(Color.GRAY);
-        addimg.setImageResource(R.drawable.add);
         homeText.setTextColor(Color.RED);
         musicText.setTextColor(Color.GRAY);
         attentionText.setTextColor(Color.GRAY);
@@ -71,6 +127,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         musicTab.setOnClickListener(this);
         attentionTab.setOnClickListener(this);
         mineTab.setOnClickListener(this);
+        addimg.setOnClickListener(this);
     }
 
     @Override
@@ -121,6 +178,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 setTabSelected(3);
                 break;
             case  R.id.add_circle:
+                Intent intent = new Intent(this, FloatActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -133,7 +192,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         switch (index) {
             case 0:
                 if (page1 == null) {
-                    page1 = new Page1();
+                    page1 = new HomePage();
                     transaction.add(R.id.container, page1);
                 } else {
                     transaction.show(page1);
@@ -141,7 +200,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case 1:
                 if (page2 == null) {
-                    page2 = new Page2();
+                    page2 = new CommunityPage();
                     transaction.add(R.id.container, page2);
                 } else {
                     transaction.show(page2);
@@ -149,7 +208,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case 2:
                 if (page3 == null) {
-                    page3 = new Page3();
+                    page3 = new AttentionPage();
                     transaction.add(R.id.container, page3);
                 } else {
                     transaction.show(page3);
@@ -157,7 +216,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case 3:
                 if (page4 == null) {
-                    page4 = new Page4();
+                    page4 = new MinePage();
                     transaction.add(R.id.container, page4);
                 } else {
                     transaction.show(page4);
