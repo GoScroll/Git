@@ -185,11 +185,11 @@ public class CommunityInfoActivity extends AppCompatActivity implements View.OnC
     /**
      * 下划线跟随手指的滑动而移动
      * @param toPosition 要滑动到的tab序号（0，1，2）
-     * @param positionOsssetPixels 滑动的距离
+     * @param positionOffsetPixels 滑动的距离
      */
-    private void movePositionX(int toPosition, float positionOsssetPixels) {
+    private void movePositionX(int toPosition, float positionOffsetPixels) {
         float curTranslationX = lineTab.getTranslationX();
-        float toPositionX = moveOne * toPosition + positionOsssetPixels;
+        float toPositionX = moveOne * toPosition + positionOffsetPixels;
         ObjectAnimator animator = ObjectAnimator.ofFloat(lineTab, "translationX", curTranslationX, toPositionX);
         animator.setDuration(500);
         animator.start();
