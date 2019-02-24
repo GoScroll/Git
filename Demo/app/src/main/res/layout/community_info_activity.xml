@@ -99,7 +99,8 @@
         android:id="@+id/community_line_tab"
         android:layout_width="50dp"
         android:layout_height="1dp"
-        android:background="#FF3030"/>
+        android:background="#FF3030"
+        android:layout_marginLeft="45dp"/>
 
     <ImageView
         android:id="@+id/community_translationLine"

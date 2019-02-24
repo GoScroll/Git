@@ -60,10 +60,10 @@ public class CommunityInfoActivity extends AppCompatActivity implements View.OnC
          * 重新设置下划线的宽度
          */
         ViewGroup.LayoutParams lp = lineTab.getLayoutParams();
-        lp.width = screenW/3;
+        lp.width = screenW/12;
         lineTab.setLayoutParams(lp);
 
-        moveOne = lp.width;  //滑动一个页面的距离
+        moveOne = screenW/3;  //滑动一个页面的距离
     }
 
     private void initView() {
@@ -151,13 +151,13 @@ public class CommunityInfoActivity extends AppCompatActivity implements View.OnC
                 tab1.setTextColor(Color.GRAY);
                 tab2.setTextColor(Color.BLACK);
                 tab3.setTextColor(Color.GRAY);
-                movePositionX(0, 0);
+                movePositionX(1, 0);
                 break;
             case 2:
                 tab1.setTextColor(Color.GRAY);
                 tab2.setTextColor(Color.GRAY);
                 tab3.setTextColor(Color.BLACK);
-                movePositionX(0, 0);
+                movePositionX(2, 0);
                 break;
         }
     }
