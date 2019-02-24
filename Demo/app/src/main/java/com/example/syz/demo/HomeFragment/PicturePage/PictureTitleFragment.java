@@ -1,4 +1,4 @@
-package com.example.syz.demo.HomeFragment.PicturePage;
+package com.example.syz.demo.homeFragment.PicturePage;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -92,15 +92,7 @@ public class PictureTitleFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     PictureAdapter picture =mPicturesList.get(holder.getAdapterPosition());
-                    if(isTwoPane){
-                        PictureContentFragment pictureContentFragment=
-                                (PictureContentFragment) getFragmentManager()
-                                        .findFragmentById(R.id.picture_content_fragment);
-                        pictureContentFragment.refresh(picture.getTitle(),picture.getContent());
-                    }else{
-                        PictureContentActivity.actionStart(getActivity(),
-                                picture.getTitle(),picture.getContent());
-                    }
+
                 }
             });
             return holder;

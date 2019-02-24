@@ -6,7 +6,7 @@
     >
     <fragment
         android:id="@+id/picture_title_fragment"
-        android:name="com.example.syz.demo.HomeFragment.PicturePage.PictureTitleFragment"
+        android:name="com.example.syz.demo.homeFragment.PicturePage.PictureTitleFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

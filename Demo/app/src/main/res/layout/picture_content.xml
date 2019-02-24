@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/picture_content_fragment"
-        android:name="com.example.syz.demo.HomeFragment.PicturePage.PictureContentFragment"
+        android:name="com.example.syz.demo.homeFragment.PicturePage.PictureContentFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

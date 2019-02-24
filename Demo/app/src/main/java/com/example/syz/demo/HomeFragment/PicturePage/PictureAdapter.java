@@ -1,13 +1,10 @@
-package com.example.syz.demo.HomeFragment.PicturePage;
+package com.example.syz.demo.homeFragment.PicturePage;
 
 /**
  * Created by ‘。；op on 2019/2/24.
  */
 
 public class PictureAdapter {
-
-
-
 
     private String title;
     private String content;
