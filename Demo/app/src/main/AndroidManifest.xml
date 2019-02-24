@@ -52,7 +52,8 @@
         <activity android:name=".screenPage.communityScreen.CommunityInfoActivity" />
         <activity android:name=".screenPage.mineScreen.MainActivity" />
         <activity android:name=".screenPage.mineScreen.ImgShowActivity" />
-        <activity android:name=".screenPage.communityScreen.SearchActivity"></activity>
+        <activity android:name=".screenPage.communityScreen.SearchActivity" />
+        <activity android:name=".screenPage.FloatActivity"></activity>
     </application>
 
 </manifest>

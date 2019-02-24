@@ -1,6 +1,7 @@
 package com.example.syz.demo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.syz.demo.screenPage.AttentionPage;
+import com.example.syz.demo.screenPage.FloatActivity;
 import com.example.syz.demo.screenPage.communityScreen.CommunityPage;
 import com.example.syz.demo.screenPage.HomePage;
 import com.example.syz.demo.screenPage.mineScreen.MinePage;
@@ -116,7 +118,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         musicimg.setColorFilter(Color.GRAY);
         attentionimg.setColorFilter(Color.GRAY);
         mineimg.setColorFilter(Color.GRAY);
-        addimg.setImageResource(R.drawable.add);
         homeText.setTextColor(Color.RED);
         musicText.setTextColor(Color.GRAY);
         attentionText.setTextColor(Color.GRAY);
@@ -126,6 +127,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         musicTab.setOnClickListener(this);
         attentionTab.setOnClickListener(this);
         mineTab.setOnClickListener(this);
+        addimg.setOnClickListener(this);
     }
 
     @Override
@@ -176,6 +178,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 setTabSelected(3);
                 break;
             case  R.id.add_circle:
+                Intent intent = new Intent(this, FloatActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
