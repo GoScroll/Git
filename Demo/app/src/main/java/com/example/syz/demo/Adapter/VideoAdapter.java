@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
+import com.example.syz.demo.screenpage.VideoShowActivity;
 import com.example.syz.demo.util.Gif;
 import com.example.syz.demo.util.MyAppcation;
 import com.example.syz.demo.util.VideoData;
@@ -60,6 +61,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
         VideoSurfaceView mSurfaceView;
         ImageButton mPlayBtn;
         ImageView mPlayBtnPause;
+        ImageView btnMax;
         TextView totalTime;
         TextView currentTime;
         SeekBar seekBar;
@@ -79,8 +81,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
             mSurfaceView = (VideoSurfaceView)itemView.findViewById(R.id.video_view);
             mPlayBtn = (ImageButton)itemView.findViewById(R.id.image_clickplay_more);
             mPlayBtnPause = (ImageView)itemView.findViewById(R.id.image_clickplay);
-            totalTime =(TextView) itemView.findViewById(R.id.tv_totalProgress);
-            currentTime =(TextView)itemView.findViewById(R.id.tv_currentProgress);
+            btnMax = (ImageView)itemView.findViewById(R.id.bt_maxsize);
+            totalTime = (TextView)itemView.findViewById(R.id.tv_totalProgress);
+            currentTime = (TextView)itemView.findViewById(R.id.tv_currentProgress);
             seekBar = (SeekBar)itemView.findViewById(R.id.seekBar);
         }
     }
@@ -105,7 +108,18 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
                 holder.goodNumber.setText(mUp+" ");
             }
         });
-
+        holder.btnMax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                VideoData video = mVideoList.get(position);
+                //holder.mSurfaceView.getMediaPlayer().release();
+                Intent intent = new Intent(view.getContext(),VideoShowActivity.class);
+                intent.putExtra("playUrl",video.getPlayUrl());
+                intent.putExtra("imgUrl",video.getCover());
+                view.getContext().startActivity(intent);
+            }
+        });
         return holder;
     }
     @Override
@@ -124,20 +138,79 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
                 holder.mSurfaceView.playVideo(video.getPlayUrl());
                 holder.mPlayBtn.setVisibility(View.GONE);
                 holder.cover.setVisibility(View.GONE);
+                final Handler handler = new Handler() {
+                    public void handleMessage(Message message) {
+                        switch (message.what) {
+                            case UPDATE:
+                                holder.currentTime.setText(message.arg1/60+":"+message.arg1%60);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                };
+                holder.mSurfaceView.getMediaPlayer().setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        holder.mPlayBtn.setVisibility(View.VISIBLE);
+                        holder.cover.setVisibility(View.VISIBLE);
+                    }
+                });
+                holder.mSurfaceView.getMediaPlayer().setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                            int mtotalTime = holder.mSurfaceView.getMediaPlayer().getDuration();
+                            holder.seekBar.setMax(mtotalTime);
+                            int mTotal = mtotalTime/1000;
+                            holder.totalTime.setText(mTotal/60+":"+mTotal%60);
+                            Timer timer = new Timer();
+                            TimerTask task = new TimerTask() {
+                                public void run() {
+                                    holder.seekBar.setProgress(holder.mSurfaceView.getMediaPlayer().getCurrentPosition());//将媒体播放器当前播放的位置赋值给进度条的进度
+                                    Message message = new Message();
+                                    message.what = UPDATE;
+                                    message.arg1 = holder.mSurfaceView.getMediaPlayer().getCurrentPosition()/1000;
+                                    handler.sendMessage(message);
+                                }
+                            };
+                            timer.schedule(task, 0, 100);//0秒后执行，每隔100ms执行一次
+
+                    }
+                });
+                holder.mSurfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
+                    @Override
+                    public void surfaceCreated(SurfaceHolder mholder) {
+
+                    }
+
+                    @Override
+                    public void surfaceChanged(SurfaceHolder mholder, int format, int width, int height) {
+                    }
+
+                    @Override
+                    public void surfaceDestroyed(SurfaceHolder mholder) {
+                        holder.mPlayBtn.setVisibility(View.VISIBLE);
+                        holder.cover.setVisibility(View.VISIBLE);
+                    }
+                });
                 mPlayView = holder.mSurfaceView;
             }
         });
         holder.mPlayBtnPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               mPlayView.pause();
+                mPlayView.pause();
                 holder.mPlayBtnPause.setVisibility(View.GONE);
             }
         });
         holder.mSurfaceView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.mPlayBtnPause.setVisibility(View.VISIBLE);
+                if(holder.mPlayBtnPause.getVisibility() == View.GONE){
+                    holder.mPlayBtnPause.setVisibility(View.VISIBLE);
+                }else{
+                    holder.mPlayBtnPause.setVisibility(View.GONE);
+                }
             }
         });
         Glide.with(MyAppcation.getContext())

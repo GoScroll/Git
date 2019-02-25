@@ -2,6 +2,7 @@ package com.example.syz.demo.util;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -10,7 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callback,
-        MediaPlayer.OnPreparedListener {
+        MediaPlayer.OnPreparedListener,MediaPlayer.OnCompletionListener {
     private SurfaceHolder mHolder;
     private MediaPlayer mediaPlayer;
     private int totalTime = 0;
@@ -63,7 +64,9 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             return 0;
         }
     }
-
+    public SurfaceHolder getSurfaceHolder(){
+        return mHolder;
+    }
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
 
@@ -80,6 +83,11 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             mediaPlayer.release();
             mediaPlayer = null;
         }
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+
     }
 
     @Override

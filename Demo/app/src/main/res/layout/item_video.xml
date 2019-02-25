@@ -89,7 +89,7 @@
                 android:layout_margin="10dp"
                 android:visibility="gone"
                 />
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -127,20 +127,11 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:src="@drawable/video_fullscreen"
-                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentRight="true"
                     android:layout_marginLeft="10dp"
                     android:tint="#ffffff"/>
-                <ImageView
-                    android:id="@+id/bt_minisize"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/video_fullscreen"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:tint="#ffffff"
-                    android:visibility="gone"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
     <RelativeLayout
