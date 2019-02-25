@@ -127,28 +127,34 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
         final VideoData video = mVideoList.get(position);
         holder.mSurfaceView.stop();
         holder.mSurfaceView.setVisibility(View.VISIBLE);
+
+
         holder.mPlayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mPlayView != null){
-                    mPlayView.stop();
-                    mPlayView.setVisibility(View.VISIBLE);
-                }
-                holder.mSurfaceView.setVisibility(View.VISIBLE);
-                holder.mSurfaceView.playVideo(video.getPlayUrl());
-                holder.mPlayBtn.setVisibility(View.GONE);
-                holder.cover.setVisibility(View.GONE);
                 final Handler handler = new Handler() {
                     public void handleMessage(Message message) {
                         switch (message.what) {
                             case UPDATE:
-                                holder.currentTime.setText(message.arg1/60+":"+message.arg1%60);
+                                if(holder.mSurfaceView.getMediaPlayer() != null){
+                                    int current = holder.mSurfaceView.getMediaPlayer().getCurrentPosition()/1000;
+                                    holder.currentTime.setText(current/60+":"+current%60);
+                                    holder.seekBar.setProgress(holder.mSurfaceView.getMediaPlayer().getCurrentPosition());//将媒体播放器当前播放的位置赋值给进度条的进度
+                                }
                                 break;
                             default:
                                 break;
                         }
                     }
                 };
+                if(mPlayView != null){
+                    mPlayView.stop();
+                    mPlayView.setVisibility(View.VISIBLE);
+                }
+                holder.mSurfaceView.setVisibility(View.VISIBLE);
+                holder.mSurfaceView.playVideo(video.getPlayUrl(),handler);
+                holder.mPlayBtn.setVisibility(View.GONE);
+                holder.cover.setVisibility(View.GONE);
                 holder.mSurfaceView.getMediaPlayer().setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
@@ -158,19 +164,18 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
                 });
                 holder.mSurfaceView.getMediaPlayer().setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                     @Override
-                    public void onPrepared(MediaPlayer mp) {
-                            int mtotalTime = holder.mSurfaceView.getMediaPlayer().getDuration();
+                    public void onPrepared(final MediaPlayer mp) {
+                            int mtotalTime = mp.getDuration();
                             holder.seekBar.setMax(mtotalTime);
                             int mTotal = mtotalTime/1000;
                             holder.totalTime.setText(mTotal/60+":"+mTotal%60);
                             Timer timer = new Timer();
                             TimerTask task = new TimerTask() {
                                 public void run() {
-                                    holder.seekBar.setProgress(holder.mSurfaceView.getMediaPlayer().getCurrentPosition());//将媒体播放器当前播放的位置赋值给进度条的进度
-                                    Message message = new Message();
-                                    message.what = UPDATE;
-                                    message.arg1 = holder.mSurfaceView.getMediaPlayer().getCurrentPosition()/1000;
-                                    handler.sendMessage(message);
+                                        Message message = new Message();
+                                        message.what = UPDATE;
+                                        //message.arg1 = mp.getCurrentPosition()/1000;
+                                        handler.sendMessage(message);
                                 }
                             };
                             timer.schedule(task, 0, 100);//0秒后执行，每隔100ms执行一次
