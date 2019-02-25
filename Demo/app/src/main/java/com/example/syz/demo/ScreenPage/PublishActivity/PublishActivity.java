@@ -18,6 +18,7 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
     private TextView cancelButton;
     private TextView selectPlate;
     private View bindingView;
+    private String platText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,19 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initView() {
+
         cancelButton = (TextView) findViewById(R.id.cancel);
         selectPlate = (TextView) findViewById(R.id.select_plate);
         bindingView = (View) findViewById(R.id.bindingView);
 
         cancelButton.setOnClickListener(this);
         selectPlate.setOnClickListener(this);
+
+        Intent intent = getIntent();
+        platText = intent.getStringExtra("title");
+        if (!(platText == null)) {
+            selectPlate.setText(platText);
+        }
 
         LightStatusbar();
     }

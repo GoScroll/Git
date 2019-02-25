@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.syz.demo.R;
-import com.example.syz.demo.adapter.CommunityAdapter;
+import com.example.syz.demo.adapter.SelectePlateAdapter;
 import com.example.syz.demo.screenPage.communityScreen.Community;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class SelectPlateActivity extends AppCompatActivity implements View.OnCli
         recyclerView = (RecyclerView) findViewById(R.id.selecte_recycleview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        CommunityAdapter adapter = new CommunityAdapter(this, communityList);
+        SelectePlateAdapter adapter = new SelectePlateAdapter(this, communityList);
         recyclerView.setAdapter(adapter);
         LightStatusbar();
     }
