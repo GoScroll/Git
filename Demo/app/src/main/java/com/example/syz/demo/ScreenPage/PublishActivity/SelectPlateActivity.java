@@ -1,52 +1,57 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.PublishActivity;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.syz.demo.R;
-import com.example.syz.demo.adapter.CommunityAdapter;
+import com.example.syz.demo.adapter.SelectePlateAdapter;
+import com.example.syz.demo.screenPage.communityScreen.Community;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommunityPage extends Fragment implements View.OnClickListener{
+public class SelectPlateActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private TextView cancelButton;
     private RecyclerView recyclerView;
-    private View search_bar;
+    private View bindingView;
     private List<Community> communityList = new ArrayList<>();
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.community_page, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.select_plate);
+
         initCommunity();
-        recyclerView = (RecyclerView) view.findViewById(R.id.communiity_item_recycleView);
-        search_bar = (View) view.findViewById(R.id.search_bar);
+        cancelButton = (TextView) findViewById(R.id.cancel);
+        bindingView = (View) findViewById(R.id.bindingView);
+        cancelButton.setOnClickListener(this);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView = (RecyclerView) findViewById(R.id.selecte_recycleview);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        CommunityAdapter adapter = new CommunityAdapter(getContext(), communityList);
+        SelectePlateAdapter adapter = new SelectePlateAdapter(this, communityList);
         recyclerView.setAdapter(adapter);
-        search_bar.setOnClickListener(this);
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle saveInstanceState) {
-        super.onActivityCreated(saveInstanceState);
+        LightStatusbar();
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.search_bar:
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                startActivity(intent);
+            case R.id.cancel:
+                finish();
+                break;
+            default:
+                break;
         }
     }
 
@@ -108,7 +113,29 @@ public class CommunityPage extends Fragment implements View.OnClickListener{
         Community item19 = new Community("http://ww1.sinaimg.cn/large/0077HGE3ly1g0e24u79azj30jg0jg75r.jpg", "美食频道",
                 "美食大杂烩！");
         communityList.add(item19);
+    }
 
+    private void LightStatusbar() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option =  View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        int statusBarHeight = getStatusBarHeight(this);
+        ViewGroup.LayoutParams params = bindingView.getLayoutParams();
+        params.height = statusBarHeight;
+        bindingView.setVisibility(View.VISIBLE);
+        bindingView.setLayoutParams(params);
+    }
 
+    private int getStatusBarHeight(Activity activity) {
+        int statusBarHeight = 0;
+        int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);
+        }
+
+        return statusBarHeight;
     }
 }
