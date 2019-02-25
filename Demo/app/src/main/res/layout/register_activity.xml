@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <LinearLayout
+        android:id="@+id/bindingView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/White"
+        android:visibility="gone"
+        android:orientation="vertical">
+    </LinearLayout>
     <RelativeLayout
         android:id="@+id/actionBar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:layout_below="@+id/bindingView">
 
         <ImageView
             android:id="@+id/register_back"
@@ -57,9 +64,10 @@
                 android:layout_toRightOf="@+id/phone_number"
                 android:layout_marginLeft="10dp"/>
             <ImageView
+                android:id="@+id/register_phone_line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/gray"
+                android:background="#10000000"
                 android:layout_alignParentBottom="true"
                 />
     </RelativeLayout>
@@ -92,9 +100,10 @@
             />
 
         <ImageView
+            android:id="@+id/check_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray"
+            android:background="#10000000"
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>
@@ -117,9 +126,10 @@
             style="?android:attr/textViewStyle"
             android:layout_marginLeft="10dp"/>
         <ImageView
+            android:id="@+id/register_password_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray"
+            android:background="#10000000"
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>

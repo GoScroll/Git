@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".homeFragment.gif.GifShowActivity"></activity>
+        <activity android:name=".homeFragment.gif.GifShowActivity" />
         <activity
             android:name=".screenPage.mineScreen.SettingActivity"
             android:label=""
@@ -37,8 +37,8 @@
         <activity android:name=".screenPage.mineScreen.RegisterActivity" />
         <activity
             android:name=".screenPage.mineScreen.PersonInfoActivity"
-            android:label=""></activity>
-
+            android:label="">
+        </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.cameraalbumtest.fileprovider"
@@ -48,8 +48,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
         <activity android:name=".screenpage.VideoShowActivity"></activity>
+        <activity android:name=".screenPage.communityScreen.CommunityInfoActivity" />
+        <activity android:name=".screenPage.mineScreen.ImgShowActivity" />
+        <activity android:name=".screenPage.communityScreen.SearchActivity" />
+        <activity
+            android:name=".screenPage.PublishActivity.PublishActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".screenPage.PublishActivity.SelectPlateActivity"></activity>
     </application>
 
 </manifest>

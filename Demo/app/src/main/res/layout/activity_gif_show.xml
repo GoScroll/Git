@@ -2,10 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screenpage.GifShowActivity"
     android:background="#000000"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
@@ -23,8 +21,8 @@
         <ImageView
             android:id="@+id/gif_show_back"
             android:src="@drawable/gif_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:tint="#ffffff"
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"

@@ -1,13 +1,16 @@
 package com.example.syz.demo.screenPage.mineScreen;
 
+import android.app.ActionBar;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
@@ -21,7 +24,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
 import com.example.syz.demo.homeFragment.gif.GifShowActivity;
 
@@ -29,11 +34,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MinePage extends Fragment implements View.OnClickListener {
 
 
     private ImageView setting_img;
-    private ImageView photo_img;
+    private CircleImageView photo_img;
     private ImageView sex_img;
     private TextView name;
     private TextView motto;
@@ -46,7 +53,6 @@ public class MinePage extends Fragment implements View.OnClickListener {
     private View gradeTab;
     private Uri photoUri;
     private String img;
-    private Bitmap photoBitmap;
     private View notification_background;
     private boolean isLogin = false;
     private IntentFilter intentFilter;
@@ -58,9 +64,6 @@ public class MinePage extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.mine_page, container, false);
-//        Bundle bundle = getActivity().getIntent().getExtras();
-//        name.setText(bundle.getString("nickName"));
-//        motto.setText(bundle.getString("motto"));
         initView(view);
         return view;
     }
@@ -82,7 +85,7 @@ public class MinePage extends Fragment implements View.OnClickListener {
                 break;
             case R.id.photo_img:
                 if (isLogin) {
-                    Intent pictureIntent = new Intent(getActivity(), GifShowActivity.class);
+                    Intent pictureIntent = new Intent(getActivity(), ImgShowActivity.class);
                     pictureIntent.putExtra("imgUrl",img);
                     startActivity(pictureIntent);
                 } else {
@@ -95,7 +98,7 @@ public class MinePage extends Fragment implements View.OnClickListener {
 
     private void initView(View view) {
         setting_img = (ImageView) view.findViewById(R.id.setting_button);
-        photo_img = (ImageView) view.findViewById(R.id.photo_img);
+        photo_img = (CircleImageView) view.findViewById(R.id.photo_img);
         name = (TextView) view.findViewById(R.id.name);
         motto = (TextView) view.findViewById(R.id.motto);
         fanTab = (TextView) view.findViewById(R.id.fans_count);
@@ -106,17 +109,13 @@ public class MinePage extends Fragment implements View.OnClickListener {
         attentionTab = (View) view.findViewById(R.id.attention_tab);
         gradeTab = (View) view.findViewById(R.id.grade_tab);
         sex_img = (ImageView) view.findViewById(R.id.sex_img);
+
         intentFilter = new IntentFilter();
         intentFilter.addAction("login");
         localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
         localReceiver = new LocalReceiver();
         localBroadcastManager.registerReceiver(localReceiver, intentFilter);
-
-        if (isLogin) {
-            photo_img.setImageBitmap(photoBitmap);
-        } else {
-            photo_img.setImageResource(R.drawable.head_photo_img);
-        }
+        photo_img.setImageResource(R.drawable.head_photo_img);
 
     }
 
@@ -125,23 +124,6 @@ public class MinePage extends Fragment implements View.OnClickListener {
         super.onDestroy();
         localBroadcastManager.unregisterReceiver(localReceiver);
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch (requestCode) {
-//            case 3:
-//                if (resultCode == RESULT_OK) {
-//                    Toast.makeText(getContext(), "nihao", Toast.LENGTH_SHORT).show();
-//                    name.setText(data.getStringExtra("nickName"));
-//                    motto.setText(data.getStringExtra("motto"));
-//                }
-//                break;
-//            default:
-//                Toast.makeText(getActivity(), "没有", Toast.LENGTH_SHORT).show();
-//                break;
-//        }
-//    }
 
     class LocalReceiver extends BroadcastReceiver {
         @Override
@@ -156,9 +138,11 @@ public class MinePage extends Fragment implements View.OnClickListener {
                     sex_img.setImageResource(R.drawable.girl);
                 }
                 img = intent.getStringExtra("img");
-                new HttpImageDownload(photo_img, img).execute();
+                photo_img.setBorderWidth(1);
+                Glide.with(getContext()).load(img).into(photo_img);
             } else {
                 isLogin = intent.getBooleanExtra("islogin", false);
+                photo_img.setBorderWidth(0);
                 photo_img.setImageResource(R.drawable.head_photo_img);
                 sex_img.setImageDrawable(null);
                 name.setText("未登录");
@@ -166,49 +150,6 @@ public class MinePage extends Fragment implements View.OnClickListener {
             }
         }
     }
-
-
-
-    public class HttpImageDownload extends AsyncTask {
-
-        private ImageView mImageView;
-        private String mImgPath;
-
-        public HttpImageDownload(ImageView imageView, String imgPath)
-        {
-            mImageView = imageView;
-            mImgPath = imgPath;
-        }
-
-        @Override
-        protected Object doInBackground(Object[] params) {
-
-            try {
-                // 创建一个URL
-                URL url = new URL("http://ww1.sinaimg.cn/large/0077HGE3ly1g0d9el5x7qj30go0aft93.jpg");
-
-                // 从URL获取对应资源的 InputStream
-                InputStream inputStream = url.openStream();
-                // 用inputStream来初始化一个Bitmap 虽然此处是Bitmap，但是URL不一定非得是Bitmap
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                // 关闭 InputStream
-                inputStream.close();
-
-                return bitmap;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            // 此处的形参o，是doInBackground的返回值
-            mImageView.setImageBitmap((Bitmap)o);
-        }
-    }
-
 
 
     /**
