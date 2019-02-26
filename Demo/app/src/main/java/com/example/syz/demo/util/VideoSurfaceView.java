@@ -1,18 +1,22 @@
 package com.example.syz.demo.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import android.os.Handler;
 
 public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callback,
-        MediaPlayer.OnPreparedListener {
+        MediaPlayer.OnPreparedListener,MediaPlayer.OnCompletionListener {
     private SurfaceHolder mHolder;
     private MediaPlayer mediaPlayer;
+    Handler handler;
     private int totalTime = 0;
     private String mUrl;
 
@@ -24,8 +28,8 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         mHolder = getHolder();
         mHolder.addCallback(this);
     }
-    public void playVideo(String url){
-        mUrl = url;
+    public void playVideo(String url,Handler handler){
+        this.handler = handler;
         if(mediaPlayer == null){
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setOnPreparedListener(this);
@@ -63,7 +67,9 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             return 0;
         }
     }
-
+    public SurfaceHolder getSurfaceHolder(){
+        return mHolder;
+    }
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
 
@@ -77,9 +83,15 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         if(mediaPlayer!=null){
+//            handler.removeMessages(10);
             mediaPlayer.release();
             mediaPlayer = null;
         }
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.syz.demo.screenPage.mineScreen;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -11,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.DocumentsContract;
@@ -27,6 +29,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,13 +58,15 @@ import okhttp3.Response;
 
 public class PersonInfoActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Toolbar personInfoToolbar;
     private ImageView head_photo;
     private TextView nickname;
     private ImageView boy_img;
     private ImageView girl_img;
     private TextView birthday;
     private TextView motto;
+    private ImageView back;
+    private TextView post;
+    private View bindingView;
     private String phone;
     private String password;
     private String Sex = "男";
@@ -96,11 +101,10 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
         boy_img = (ImageView) findViewById(R.id.boy_img);
         girl_img = (ImageView) findViewById(R.id.girl_img);
         birthday = (TextView) findViewById(R.id.birthday);
+        back = (ImageView) findViewById(R.id.back);
+        post = (TextView) findViewById(R.id.post);
         motto = (EditText) findViewById(R.id.motto);
-        personInfoToolbar = (Toolbar) findViewById(R.id.person_info_toolbar);
-        personInfoToolbar.setNavigationIcon(R.mipmap.back);
-        setSupportActionBar(personInfoToolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        bindingView = (View) findViewById(R.id.bindingView);
 
         boy_img.setImageResource(R.drawable.boy);
 
@@ -108,6 +112,10 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
         girl_img.setOnClickListener(this);
         head_photo.setOnClickListener(this);
         birthday.setOnClickListener(this);
+        back.setOnClickListener(this);
+        post.setOnClickListener(this);
+
+        LightStatusbar();
     }
 
     /**
@@ -121,22 +129,14 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-            case R.id.success_button:
-                register();
-                break;
-        }
-
-        return true;
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.back:
+                finish();
+                break;
+            case R.id.post:
+                register();
+                break;
             case R.id.boy_img:
                 boy_img.setImageResource(R.drawable.boy);
                 girl_img.setImageDrawable(null);
@@ -493,6 +493,30 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
                 });
             }
         });
+    }
+
+    private void LightStatusbar() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option =  View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        int statusBarHeight = getStatusBarHeight(this);
+        ViewGroup.LayoutParams params = bindingView.getLayoutParams();
+        params.height = statusBarHeight;
+        bindingView.setVisibility(View.VISIBLE);
+        bindingView.setLayoutParams(params);
+    }
+
+    private int getStatusBarHeight(Activity activity) {
+        int statusBarHeight = 0;
+        int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);
+        }
+
+        return statusBarHeight;
     }
 
 }
