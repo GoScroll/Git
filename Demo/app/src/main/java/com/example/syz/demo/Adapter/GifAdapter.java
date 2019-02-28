@@ -155,7 +155,7 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> {
         // title标题，微信、QQ和QQ空间等平台使用
         oks.setTitle("请食用：");
         // titleUrl QQ和QQ空间跳转链接
-        oks.setTitleUrl("https://github.com/XueTianGit/Git");
+        oks.setTitleUrl(url);
         // text是分享文本，所有平台都需要这个字段
         oks.setText(text);
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
