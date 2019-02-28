@@ -28,8 +28,7 @@ public class VideoSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         mHolder = getHolder();
         mHolder.addCallback(this);
     }
-    public void playVideo(String url,Handler handler){
-        this.handler = handler;
+    public void playVideo(String url){
         if(mediaPlayer == null){
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setOnPreparedListener(this);

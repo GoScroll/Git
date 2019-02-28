@@ -152,7 +152,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
                     mPlayView.setVisibility(View.VISIBLE);
                 }
                 holder.mSurfaceView.setVisibility(View.VISIBLE);
-                holder.mSurfaceView.playVideo(video.getPlayUrl(),handler);
+                holder.mSurfaceView.playVideo(video.getPlayUrl());
                 holder.mPlayBtn.setVisibility(View.GONE);
                 holder.cover.setVisibility(View.GONE);
                 holder.mSurfaceView.getMediaPlayer().setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
