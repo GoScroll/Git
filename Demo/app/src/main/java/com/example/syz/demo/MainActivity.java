@@ -29,6 +29,9 @@ import com.example.syz.demo.screenPage.communityScreen.CommunityPage;
 import com.example.syz.demo.screenPage.HomePage;
 import com.example.syz.demo.screenPage.mineScreen.Loginactivity;
 import com.example.syz.demo.screenPage.mineScreen.MinePage;
+import com.mob.MobSDK;
+
+import cn.sharesdk.framework.ShareSDK;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
@@ -64,7 +67,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
+        MobSDK.init(this);
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                 || ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);

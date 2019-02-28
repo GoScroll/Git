@@ -39,6 +39,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
@@ -218,6 +219,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
                 }
             }
         });
+        holder.shareImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showShare(video.getTitle(),video.getPlayUrl());
+            }
+        });
         Glide.with(MyAppcation.getContext())
                 .load(video.getAuthorImg())
                 .into(holder.headerImage);
@@ -236,6 +243,24 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return mVideoList.size();
+    }
+    private void showShare(String text,String url) {
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+
+        // title标题，微信、QQ和QQ空间等平台使用
+        oks.setTitle("请食用：");
+        // titleUrl QQ和QQ空间跳转链接
+        oks.setTitleUrl("https://github.com/XueTianGit/Git");
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText(text);
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+        oks.setImagePath("http://ww1.sinaimg.cn/large/005T39qaly1g0ml0t8kkej30hs0hst92.jpg");//确保SDcard下面存在此张图片
+        // url在微信、微博，Facebook等平台中使用
+        oks.setUrl(url);
+        // 启动分享GUI
+        oks.show(MyAppcation.getContext());
     }
 
 }
