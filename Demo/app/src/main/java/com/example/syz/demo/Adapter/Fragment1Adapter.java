@@ -168,7 +168,5 @@ public class Fragment1Adapter extends RecyclerView.Adapter<Fragment1Adapter.View
         } catch (Exception e) {
             Log.e(TAG, Log.getStackTraceString(e));
         }
-
-
     }
 }

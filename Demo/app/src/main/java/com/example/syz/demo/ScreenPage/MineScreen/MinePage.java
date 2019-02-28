@@ -1,13 +1,16 @@
 package com.example.syz.demo.screenPage.mineScreen;
 
+import android.app.ActionBar;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
@@ -61,9 +64,6 @@ public class MinePage extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.mine_page, container, false);
-//        Bundle bundle = getActivity().getIntent().getExtras();
-//        name.setText(bundle.getString("nickName"));
-//        motto.setText(bundle.getString("motto"));
         initView(view);
         return view;
     }
@@ -109,6 +109,7 @@ public class MinePage extends Fragment implements View.OnClickListener {
         attentionTab = (View) view.findViewById(R.id.attention_tab);
         gradeTab = (View) view.findViewById(R.id.grade_tab);
         sex_img = (ImageView) view.findViewById(R.id.sex_img);
+
         intentFilter = new IntentFilter();
         intentFilter.addAction("login");
         localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
@@ -123,23 +124,6 @@ public class MinePage extends Fragment implements View.OnClickListener {
         super.onDestroy();
         localBroadcastManager.unregisterReceiver(localReceiver);
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch (requestCode) {
-//            case 3:
-//                if (resultCode == RESULT_OK) {
-//                    Toast.makeText(getContext(), "nihao", Toast.LENGTH_SHORT).show();
-//                    name.setText(data.getStringExtra("nickName"));
-//                    motto.setText(data.getStringExtra("motto"));
-//                }
-//                break;
-//            default:
-//                Toast.makeText(getActivity(), "没有", Toast.LENGTH_SHORT).show();
-//                break;
-//        }
-//    }
 
     class LocalReceiver extends BroadcastReceiver {
         @Override
