@@ -1,5 +1,6 @@
 package com.example.syz.demo.adapter;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
+import com.example.syz.demo.homeFragment.gif.GifShowActivity;
+import com.example.syz.demo.screenpage.TextComment;
 import com.example.syz.demo.util.MyAppcation;
 import com.example.syz.demo.util.Text;
-
+import com.example.syz.demo.util.TextSome;
 
 
 import java.util.List;
@@ -67,8 +70,8 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_text,viewGroup,false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
+        final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_text,viewGroup,false);
         final ViewHolder holder = new ViewHolder(view);
         holder.goodImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +93,22 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
                 holder.commentGood.setImageResource(R.drawable.text_good_fill);
                 holder.commentGood.setColorFilter(Color.RED);
                 holder.commentGoodNumber.setText(mDown+" ");
+            }
+        });
+        holder.textSmile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Text mText = mTextList.get(position);
+                TextSome textSome = new TextSome();
+                textSome.setTextSmile(mText.getText());
+                textSome.setHeaderImage(mText.getHeader());
+                textSome.setGoodNumber(mText.getUp());
+                textSome.setShareNumber(mText.getForward());
+                textSome.setBadNumber(mText.getDown());
+                Intent intent = new Intent(view.getContext(),TextComment.class);
+                intent.putExtra("textsome",textSome);
+                view.getContext().startActivity(intent);
             }
         });
         return holder;
