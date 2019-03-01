@@ -50,8 +50,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
-        <activity android:name=".screenpage.VideoShowActivity" />
+        <activity android:name=".screenPage.VideoShowActivity"></activity>
         <activity android:name=".screenPage.communityScreen.CommunityInfoActivity" />
         <activity android:name=".screenPage.mineScreen.ImgShowActivity" />
         <activity android:name=".screenPage.communityScreen.SearchActivity" />

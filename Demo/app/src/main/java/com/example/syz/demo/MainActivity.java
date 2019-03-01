@@ -140,7 +140,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         musicimg.setColorFilter(Color.GRAY);
         attentionimg.setColorFilter(Color.GRAY);
         mineimg.setColorFilter(Color.GRAY);
-        addimg.setImageResource(R.drawable.add);
         homeText.setTextColor(Color.RED);
         musicText.setTextColor(Color.GRAY);
         attentionText.setTextColor(Color.GRAY);
