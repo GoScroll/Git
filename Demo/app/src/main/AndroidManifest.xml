@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.syz.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,6 +11,7 @@
 
     <application
         android:name=".util.MyAppcation"
+        tools:replace="android:name"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".homeFragment.gif.GifShowActivity" />
+
+        <activity android:name=".homeFragment.gif.GifShowActivity"></activity>
         <activity
             android:name=".screenPage.mineScreen.SettingActivity"
             android:label=""
@@ -37,8 +40,7 @@
         <activity android:name=".screenPage.mineScreen.RegisterActivity" />
         <activity
             android:name=".screenPage.mineScreen.PersonInfoActivity"
-            android:label="">
-        </activity>
+            android:label=""></activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.cameraalbumtest.fileprovider"
