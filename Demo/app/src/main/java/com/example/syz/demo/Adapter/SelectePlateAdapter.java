@@ -2,12 +2,16 @@ package com.example.syz.demo.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
@@ -20,6 +24,9 @@ public class SelectePlateAdapter extends RecyclerView.Adapter<SelectePlateAdapte
     private List<Community> mCommunityList;
     private Context mContext;
     private byte[] b;
+    private Handler handler;
+    public static final int DELETE = 1;
+    public static final String POSITION = "POSITION";
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         View communityItem;
@@ -36,23 +43,23 @@ public class SelectePlateAdapter extends RecyclerView.Adapter<SelectePlateAdapte
         }
     }
 
-    public SelectePlateAdapter(Context context, List<Community> communityList) {
+    public SelectePlateAdapter(Context context, List<Community> communityList, Handler handler) {
         this.mCommunityList = communityList;
         this.mContext = context;
+        this.handler = handler;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.community_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
         holder.communityItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                Community community = mCommunityList.get(position);
-                Intent intent = new Intent(mContext, PublishActivity.class);
-                intent.putExtra("title", community.getCommunityItemTitle());
-                mContext.startActivity(intent);
+                Message msg = new Message();
+                msg.what = DELETE;
+                msg.arg1 = holder.getAdapterPosition();
+                handler.sendMessage(msg);
             }
         });
         return holder;

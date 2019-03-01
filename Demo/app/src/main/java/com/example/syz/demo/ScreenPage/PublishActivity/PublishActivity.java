@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.syz.demo.R;
 import com.example.syz.demo.util.Text;
@@ -18,7 +19,6 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
     private TextView cancelButton;
     private TextView selectPlate;
     private View bindingView;
-    private String platText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,6 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
         cancelButton.setOnClickListener(this);
         selectPlate.setOnClickListener(this);
 
-        Intent intent = getIntent();
-        platText = intent.getStringExtra("title");
-        if (!(platText == null)) {
-            selectPlate.setText(platText);
-        }
-
         LightStatusbar();
     }
 
@@ -55,9 +49,19 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.select_plate:
                 Intent intent = new Intent(this, SelectPlateActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == 2) {
+            String platText = data.getStringExtra("title");
+            selectPlate.setText(platText);
+
         }
     }
 
@@ -84,5 +88,6 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
 
         return statusBarHeight;
     }
+
 
 }
