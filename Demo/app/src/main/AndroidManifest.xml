@@ -11,13 +11,13 @@
 
     <application
         android:name=".util.MyAppcation"
-        tools:replace="android:name"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:name">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask">
@@ -27,8 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".homeFragment.gif.GifShowActivity"></activity>
+        <activity android:name=".homeFragment.gif.GifShowActivity" />
         <activity
             android:name=".screenPage.mineScreen.SettingActivity"
             android:label=""
@@ -40,7 +39,8 @@
         <activity android:name=".screenPage.mineScreen.RegisterActivity" />
         <activity
             android:name=".screenPage.mineScreen.PersonInfoActivity"
-            android:label=""></activity>
+            android:label="" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.cameraalbumtest.fileprovider"
@@ -50,15 +50,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <activity android:name=".screenpage.VideoShowActivity"></activity>
+
+        <activity android:name=".screenpage.VideoShowActivity" />
         <activity android:name=".screenPage.communityScreen.CommunityInfoActivity" />
         <activity android:name=".screenPage.mineScreen.ImgShowActivity" />
         <activity android:name=".screenPage.communityScreen.SearchActivity" />
         <activity
             android:name=".screenPage.PublishActivity.PublishActivity"
-            android:launchMode="singleTask">
-        </activity>
-        <activity android:name=".screenPage.PublishActivity.SelectPlateActivity"></activity>
+            android:launchMode="singleTask"></activity>
+        <activity android:name=".screenPage.PublishActivity.SelectPlateActivity" />
+        <activity android:name=".screenpage.TextComment"></activity>
     </application>
 
 </manifest>
