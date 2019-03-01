@@ -1,11 +1,13 @@
 package com.example.syz.demo.screenPage.communityScreen;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +37,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private TextView cardTab;
     private TextView userTab;
     private ImageView lineTab;
+    private View bindingView;
     private List<Fragment> fragmentList = new ArrayList<>();
     private int moveOne;
     private Boolean isScrolling = false;
@@ -80,6 +84,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         cardTab = (TextView) findViewById(R.id.search_card);
         userTab = (TextView) findViewById(R.id.search_user);
         lineTab = (ImageView) findViewById(R.id.search_line);
+        bindingView = (View) findViewById(R.id.bindingView);
 
         CardFragment cardFragment = new CardFragment();
         UserFragment userFragment = new UserFragment();
@@ -94,9 +99,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         cardTab.setOnClickListener(this);
         userTab.setOnClickListener(this);
+        cancelText.setOnClickListener(this);
 
         searchViewPage.setOnPageChangeListener(this);
-
+        LightStatusbar();
 
     }
 
@@ -158,6 +164,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.search_user:
                 searchViewPage.setCurrentItem(1);
                 break;
+            case R.id.cancel:
+                finish();
             default:
                 break;
         }
@@ -170,6 +178,40 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         animator.setDuration(500);
         animator.start();
     }
+
+    private void LightStatusbar() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option =  View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        int statusBarHeight = getStatusBarHeight(this);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) bindingView.getLayoutParams();
+        params.height = statusBarHeight;
+        bindingView.setVisibility(View.VISIBLE);
+        bindingView.setLayoutParams(params);
+    }
+
+    private void DarkStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {//android6.0以后可以对状态栏文字颜色和图标进行修改
+            getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        bindingView.setVisibility(View.GONE);
+    }
+
+    private int getStatusBarHeight(Activity activity) {
+        int statusBarHeight = 0;
+        int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);
+        }
+
+        return statusBarHeight;
+    }
+
+
 
 
 }
