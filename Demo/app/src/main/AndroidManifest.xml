@@ -58,7 +58,7 @@
             android:name=".screenPage.PublishActivity.PublishActivity"
             android:launchMode="singleTask"></activity>
         <activity android:name=".screenPage.PublishActivity.SelectPlateActivity" />
-        <activity android:name=".screenpage.TextComment"></activity>
+        <activity android:name=".screenPage.TextComment"></activity>
     </application>
 
 </manifest>

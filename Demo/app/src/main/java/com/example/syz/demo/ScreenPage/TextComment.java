@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenpage;
+package com.example.syz.demo.screenPage;
 
 import android.content.Intent;
 import android.content.res.Resources;

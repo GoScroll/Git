@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.syz.demo.homeFragment.WorldFragment;
+import com.example.syz.demo.homeFragment.WordFragment;
 import com.example.syz.demo.homeFragment.gif.GifFragment;
-import com.example.syz.demo.homeFragment.PicturnFragment;
+import com.example.syz.demo.homeFragment.PictureFragment;
 import com.example.syz.demo.homeFragment.VideoFragment;
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.myFragmentAdapter;
@@ -81,9 +81,9 @@ public class HomePage extends Fragment implements View.OnClickListener, ViewPage
     private void initView(View view) {
         myViewPager = (ViewPager) view.findViewById(R.id.myViewPage);
 
-        WorldFragment fragmentPage1 = new WorldFragment();
+        WordFragment fragmentPage1 = new WordFragment();
         GifFragment fragmentPage2 = new GifFragment();
-        PicturnFragment fragmentPage3 = new PicturnFragment();
+        PictureFragment fragmentPage3 = new PictureFragment();
         VideoFragment fragmentPage4 = new VideoFragment();
 
         List<Fragment> fragmentList = new ArrayList<Fragment>();

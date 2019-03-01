@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
-import com.example.syz.demo.screenpage.VideoShowActivity;
+import com.example.syz.demo.screenPage.VideoShowActivity;
 import com.example.syz.demo.util.Gif;
 import com.example.syz.demo.util.MyAppcation;
 import com.example.syz.demo.util.VideoData;
