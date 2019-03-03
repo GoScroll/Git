@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.communityScreen.community;
 
 import android.os.Bundle;
 import android.os.Handler;

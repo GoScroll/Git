@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.communityScreen.community;
 
 public class Community {
     private String communityItemUrl;

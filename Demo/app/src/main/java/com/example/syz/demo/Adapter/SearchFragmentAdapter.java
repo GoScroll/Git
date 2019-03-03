@@ -22,4 +22,13 @@ public class SearchFragmentAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return mFragmentList.size();
     }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
+
+    public void setmFragmentList(List<Fragment> mFragmentList) {
+        this.mFragmentList = mFragmentList;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.PublishActivity;
+package com.example.syz.demo.screenPage.publishScreen;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,11 +13,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.SelectePlateAdapter;
-import com.example.syz.demo.screenPage.communityScreen.Community;
+import com.example.syz.demo.screenPage.communityScreen.community.Community;
 
 import java.util.ArrayList;
 import java.util.List;

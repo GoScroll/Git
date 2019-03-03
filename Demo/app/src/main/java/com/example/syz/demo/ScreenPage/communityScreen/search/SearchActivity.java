@@ -1,30 +1,28 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.communityScreen.search;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.SearchFragmentAdapter;
-import com.example.syz.demo.util.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +42,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private Boolean isBackScrolling = false;
     private long startTime = 0;
     private long currentTime = 0;
+    private SearchFragmentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +89,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         UserFragment userFragment = new UserFragment();
         fragmentList.add(cardFragment);
         fragmentList.add(userFragment);
-        SearchFragmentAdapter adapter = new SearchFragmentAdapter(getSupportFragmentManager(), fragmentList);
+        adapter = new SearchFragmentAdapter(getSupportFragmentManager(), fragmentList);
         searchViewPage.setAdapter(adapter);
 
         cardTab.setTextColor(Color.BLACK);
@@ -102,6 +101,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         cancelText.setOnClickListener(this);
 
         searchViewPage.setOnPageChangeListener(this);
+        searchText.addTextChangedListener(new EditChangeListener());
         LightStatusbar();
 
     }
@@ -165,7 +165,23 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 searchViewPage.setCurrentItem(1);
                 break;
             case R.id.cancel:
-                finish();
+                if (cancelText.getText().equals("取消")) {
+                    finish();
+                } else {
+                    CardInfoFragment cardInfoFragment = new CardInfoFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("searchData", searchText.getText().toString());
+                    cardInfoFragment.setArguments(bundle);
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.card_fragment, cardInfoFragment).commit();
+                    fragmentList.clear();
+                    fragmentList.add(cardInfoFragment);
+                    fragmentList.add(new UserFragment());
+                    adapter.setmFragmentList(fragmentList);
+                    adapter.notifyDataSetChanged();
+                    searchViewPage.invalidate();
+                }
+                break;
             default:
                 break;
         }
@@ -211,7 +227,23 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         return statusBarHeight;
     }
 
+    class EditChangeListener implements TextWatcher{
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+        }
 
+        @Override
+        public void onTextChanged(CharSequence s, int start, int after, int count) {
+            if (!(TextUtils.isEmpty(searchText.getText().toString()))) {
+                cancelText.setText("搜索");
+                cancelText.setTextColor(Color.RED);
+            }
+        }
 
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    }
 }

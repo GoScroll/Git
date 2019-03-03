@@ -50,15 +50,17 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <activity android:name=".screenPage.VideoShowActivity"></activity>
-        <activity android:name=".screenPage.communityScreen.CommunityInfoActivity" />
+
+        <activity android:name=".screenPage.VideoShowActivity" />
+        <activity android:name=".screenPage.communityScreen.community.CommunityInfoActivity" />
         <activity android:name=".screenPage.mineScreen.ImgShowActivity" />
-        <activity android:name=".screenPage.communityScreen.SearchActivity" />
+        <activity android:name=".screenPage.communityScreen.search.SearchActivity" />
         <activity
-            android:name=".screenPage.PublishActivity.PublishActivity"
-            android:launchMode="singleTask"></activity>
-        <activity android:name=".screenPage.PublishActivity.SelectPlateActivity" />
-        <activity android:name=".screenPage.TextComment"></activity>
+            android:name=".screenPage.publishScreen.PublishActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".screenPage.publishScreen.SelectPlateActivity" />
+        <activity android:name=".screenPage.TextComment" />
+        <activity android:name=".screenPage.publishScreen.CardInfoActivity"></activity>
     </application>
 
 </manifest>

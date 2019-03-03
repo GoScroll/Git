@@ -1,17 +1,15 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.communityScreen.community;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.Fragment1Adapter;
@@ -29,35 +27,20 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class Fragment1 extends Fragment {
+public class Fragment2 extends Fragment {
 
     private RecyclerView recyclerView;
     private List<Page1Data> dataList = new ArrayList<>();
-    private Fragment1Adapter adapter;
     private String TAG = "Fragment1";
     private String url = "https://www.apiopen.top/satinGodApi?type=1&page=1";
-    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstancdState) {
-        View view = inflater.inflate(R.layout.page1, null);
+        View view = inflater.inflate(R.layout.page2, null);
 
         requestData();
         recyclerView = (RecyclerView) view.findViewById(R.id.page1_item);
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.page1_swipe_refresh);
         return view;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle saveInstanceState) {
-        super.onActivityCreated(saveInstanceState);
-
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshData();
-            }
-        });
     }
 
     private void requestData() {
@@ -93,8 +76,9 @@ public class Fragment1 extends Fragment {
                 } catch (Exception e) {
                     Log.e(TAG, Log.getStackTraceString(e));
                 }
+
                 Message msg = new Message();
-                msg.what = 0;
+                msg.what = 1;
                 handler.sendMessage(msg);
             }
         });
@@ -104,38 +88,15 @@ public class Fragment1 extends Fragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case 0:
+                case 1:
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(layoutManager);
-                    adapter = new Fragment1Adapter(getContext(), dataList);
+                    Fragment1Adapter adapter = new Fragment1Adapter(getContext(), dataList);
                     recyclerView.setAdapter(adapter);
-                    swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
-                    break;
-                case 1:
-                    requestData();
-                    adapter.notifyDataSetChanged();
-                    swipeRefresh.setRefreshing(false);
                     break;
                 default:
                     break;
             }
         }
     };
-
-    private void refreshData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-
-                } catch (Exception e) {
-                    Log.e(TAG, Log.getStackTraceString(e));
-                }
-                Message msg = new Message();
-                msg.what = 1;
-                handler.sendMessage(msg);
-            }
-        }).start();
-    }
 }

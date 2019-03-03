@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.syz.demo.homeFragment.WordFragment;
 import com.example.syz.demo.homeFragment.gif.GifFragment;
-import com.example.syz.demo.homeFragment.PictureFragment;
+import com.example.syz.demo.homeFragment.picturePage.PictureFragment;
 import com.example.syz.demo.homeFragment.VideoFragment;
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.myFragmentAdapter;

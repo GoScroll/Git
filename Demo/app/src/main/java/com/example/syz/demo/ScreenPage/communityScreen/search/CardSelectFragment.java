@@ -1,12 +1,10 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.communityScreen.search;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,21 +14,29 @@ import android.widget.Toast;
 
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.SearchCardFragmentAdapter;
-import com.example.syz.demo.adapter.SearchFragmentAdapter;
 import com.example.syz.demo.util.SearchOrderData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardFragment extends Fragment {
-
+public class CardSelectFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<SearchOrderData> mList = new ArrayList<>();
-    private IntentFilter intentFilter;
-//    private LocalReceiver localReceiver;
-//    private LocalBroadcastManager localBroadcastManager;
-//    private boolean issearch = false;
-//    private View view;
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    CardInfoFragment cardInfoFragment = new CardInfoFragment();
+                    Bundle bundle = msg.getData();
+                    cardInfoFragment.setArguments(bundle);
+                    showFragment(cardInfoFragment);
+                    break;
+            }
+        }
+    };
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 //        if (!issearch) {
@@ -50,12 +56,12 @@ public class CardFragment extends Fragment {
 //        intentFilter.addAction("search");
 //        localReceiver = new LocalReceiver();
 //        localBroadcastManager.registerReceiver(localReceiver, intentFilter);
-        View view = inflater.inflate(R.layout.card_fragment, container, false);
+        View view = inflater.inflate(R.layout.card_selected_fragment, container, false);
         initData();
         recyclerView = (RecyclerView) view.findViewById(R.id.search_recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        SearchCardFragmentAdapter adapter = new SearchCardFragmentAdapter(mList);
+        SearchCardFragmentAdapter adapter = new SearchCardFragmentAdapter(mList, handler);
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -100,5 +106,15 @@ public class CardFragment extends Fragment {
 //            Toast.makeText(getActivity(), "nihao", Toast.LENGTH_SHORT).show();
 //        }
 //    }
+
+    private void showFragment(Fragment fragment2) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.card_fragment, fragment2)
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
+    }
+
+
+
 
 }

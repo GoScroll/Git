@@ -1,8 +1,6 @@
 package com.example.syz.demo.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
@@ -11,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
-import com.example.syz.demo.screenPage.PublishActivity.PublishActivity;
-import com.example.syz.demo.screenPage.communityScreen.Community;
+import com.example.syz.demo.screenPage.communityScreen.community.Community;
 
 import java.util.List;
 

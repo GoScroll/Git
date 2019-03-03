@@ -1,6 +1,10 @@
 package com.example.syz.demo.adapter;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +20,7 @@ import java.util.List;
 public class SearchCardFragmentAdapter extends RecyclerView.Adapter<SearchCardFragmentAdapter.ViewHolder> {
 
     private List<SearchOrderData> mList;
-    private LocalBroadcastManager localBroadcastManager;
+    private Handler handler;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView order_number;
@@ -31,8 +35,9 @@ public class SearchCardFragmentAdapter extends RecyclerView.Adapter<SearchCardFr
         }
     }
 
-    public SearchCardFragmentAdapter(List<SearchOrderData> list) {
+    public SearchCardFragmentAdapter(List<SearchOrderData> list, Handler handler) {
         this.mList = list;
+        this.handler = handler;
     }
 
     public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
@@ -43,10 +48,13 @@ public class SearchCardFragmentAdapter extends RecyclerView.Adapter<SearchCardFr
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-                LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(parent.getContext());
-                Intent intent = new Intent("search");
-                intent.putExtra("order", position);
-                localBroadcastManager.sendBroadcast(intent);
+                Message message = new Message();
+                Bundle bundle = new Bundle();
+                SearchOrderData selectData = mList.get(position);
+                bundle.putString("searchData", selectData.getOrderText());
+                message.setData(bundle);
+                message.what = 1;
+                handler.sendMessage(message);
             }
         });
         return holder;
@@ -61,4 +69,5 @@ public class SearchCardFragmentAdapter extends RecyclerView.Adapter<SearchCardFr
     public int getItemCount() {
         return mList.size();
     }
+
 }
