@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.communityScreen.community;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.CFragmentAdapter;
-import com.example.syz.demo.util.Text;
 
 
 import java.util.ArrayList;

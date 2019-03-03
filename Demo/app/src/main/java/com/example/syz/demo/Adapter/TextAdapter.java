@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.syz.demo.R;
 import com.example.syz.demo.homeFragment.gif.GifShowActivity;
-import com.example.syz.demo.screenpage.TextComment;
+import com.example.syz.demo.screenPage.TextComment;
 import com.example.syz.demo.util.MyAppcation;
 import com.example.syz.demo.util.Text;
 import com.example.syz.demo.util.TextSome;

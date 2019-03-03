@@ -1,8 +1,11 @@
-package com.example.syz.demo.screenPage.PublishActivity;
+package com.example.syz.demo.screenPage.publishScreen;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.SelectePlateAdapter;
-import com.example.syz.demo.screenPage.communityScreen.Community;
+import com.example.syz.demo.screenPage.communityScreen.community.Community;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +27,20 @@ public class SelectPlateActivity extends AppCompatActivity implements View.OnCli
     private RecyclerView recyclerView;
     private View bindingView;
     private List<Community> communityList = new ArrayList<>();
+    private String title;
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SelectePlateAdapter.DELETE:
+                    int mPosition = msg.arg1;
+                    Intent intent = new Intent();
+                    title = communityList.get(mPosition).getCommunityItemTitle();
+                    intent.putExtra("title", title);
+                    setResult(2, intent);
+                    finish();
+            }
+        }
+    };
 
 
     @Override
@@ -39,7 +56,7 @@ public class SelectPlateActivity extends AppCompatActivity implements View.OnCli
         recyclerView = (RecyclerView) findViewById(R.id.selecte_recycleview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        SelectePlateAdapter adapter = new SelectePlateAdapter(this, communityList);
+        SelectePlateAdapter adapter = new SelectePlateAdapter(this, communityList, handler);
         recyclerView.setAdapter(adapter);
         LightStatusbar();
     }
@@ -138,4 +155,5 @@ public class SelectPlateActivity extends AppCompatActivity implements View.OnCli
 
         return statusBarHeight;
     }
+
 }

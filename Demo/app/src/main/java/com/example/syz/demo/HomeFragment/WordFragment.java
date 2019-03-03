@@ -34,7 +34,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 
-public class WorldFragment extends Fragment {
+public class WordFragment extends Fragment {
     private static final int UPDATE = 1;
     private static final int RE_UPDATE = 2;
     private List<Text> mText = new ArrayList<>();

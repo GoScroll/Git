@@ -16,22 +16,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.syz.demo.screenPage.AttentionPage;
-import com.example.syz.demo.screenPage.PublishActivity.PublishActivity;
+import com.example.syz.demo.screenPage.attentionScreen.AttentionPage;
+import com.example.syz.demo.screenPage.publishScreen.PublishActivity;
 import com.example.syz.demo.screenPage.communityScreen.CommunityPage;
 import com.example.syz.demo.screenPage.HomePage;
 import com.example.syz.demo.screenPage.mineScreen.Loginactivity;
 import com.example.syz.demo.screenPage.mineScreen.MinePage;
 import com.mob.MobSDK;
-
-import cn.sharesdk.framework.ShareSDK;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {

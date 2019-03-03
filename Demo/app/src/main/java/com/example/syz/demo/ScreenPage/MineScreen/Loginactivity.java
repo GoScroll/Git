@@ -86,7 +86,7 @@ public class Loginactivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.login_button:
-                if (loginphone.getText().length()>0 && loginpassword.getText().length()> 0) {
+                if (!TextUtils.isEmpty(loginphone.getText()) && !TextUtils.isEmpty(loginpassword.getText())) {
                     loginApp();
                 } else {
                     Toast.makeText(this, "请填写账号密码", Toast.LENGTH_SHORT).show();

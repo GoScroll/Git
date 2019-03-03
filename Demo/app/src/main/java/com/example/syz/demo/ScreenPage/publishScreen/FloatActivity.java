@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage;
+package com.example.syz.demo.screenPage.publishScreen;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

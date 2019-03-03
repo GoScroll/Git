@@ -1,6 +1,8 @@
 package com.example.syz.demo.util;
 
-public class SearchOrderData {
+import java.io.Serializable;
+
+public class SearchOrderData implements Serializable {
     private int orderNumber;
     private String orderText;
 

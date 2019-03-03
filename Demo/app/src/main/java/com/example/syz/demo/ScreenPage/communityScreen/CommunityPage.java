@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.example.syz.demo.R;
 import com.example.syz.demo.adapter.CommunityAdapter;
+import com.example.syz.demo.screenPage.communityScreen.community.Community;
+import com.example.syz.demo.screenPage.communityScreen.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;

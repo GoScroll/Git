@@ -1,10 +1,8 @@
-package com.example.syz.demo.screenpage;
+package com.example.syz.demo.screenPage;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -131,7 +129,7 @@ public class TextComment extends AppCompatActivity{
                 break;
             case R.id.textcomment_photo:
             case R.id.textcomment_comment:
-                Intent intent = new Intent(this,com.example.syz.demo.screenPage.PublishActivity.PublishActivity.class);
+                Intent intent = new Intent(this,com.example.syz.demo.screenPage.publishScreen.PublishActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_bottom_in, R.anim.silde_stay);
                 break;

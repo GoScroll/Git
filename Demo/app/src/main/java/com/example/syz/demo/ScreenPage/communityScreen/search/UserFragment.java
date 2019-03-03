@@ -1,4 +1,4 @@
-package com.example.syz.demo.screenPage.communityScreen;
+package com.example.syz.demo.screenPage.communityScreen.search;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

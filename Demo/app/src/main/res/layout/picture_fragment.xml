@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
+    android:layout_height="match_parent"
+    >
+    <fragment
+        android:id="@+id/picture_title_fragment"
+        android:name="com.example.syz.demo.homeFragment.picturePage.PictureTitleFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="图片"
-        android:textSize="50dp"
-        android:gravity="center"/>
+        android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</FrameLayout>
